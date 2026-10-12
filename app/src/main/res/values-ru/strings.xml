@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Clint</string>
+    <string name="app_name">Clint Browser</string>
     <string name="clint_downloader_label">Clint Downloader</string>
     <string name="back">Назад</string>
     <string name="forward">Вперёд</string>
@@ -72,9 +72,9 @@
     </plurals>
     <string name="pref_category_custom_prompts">Пользовательские диалоги браузера</string>
     <string name="custom_select_menus_title">Пользовательские меню выбора</string>
-    <string name="custom_select_menus_summary">Использовать собственный выбор Clint для выпадающих списков \"&lt;select&gt;\" вместо стандартного WebView.</string>
+    <string name="custom_select_menus_summary">Использовать собственный выбор Clint Browser для выпадающих списков \"&lt;select&gt;\" вместо стандартного WebView.</string>
     <string name="custom_js_dialogs_title">Пользовательские диалоги JavaScript</string>
-    <string name="custom_js_dialogs_summary">Использовать собственные диалоги Clint для alert(), confirm() и prompt() вместо стандартных диалогов WebView.</string>
+    <string name="custom_js_dialogs_summary">Использовать собственные диалоги Clint Browser для alert(), confirm() и prompt() вместо стандартных диалогов WebView.</string>
     <string name="js_dialog_title">Сообщение с сайта %1$s</string>
     <string name="js_before_unload_title">Покинуть сайт?</string>
     <string name="js_before_unload_message">Внесённые изменения могут не сохраниться.</string>
@@ -98,9 +98,9 @@
     <string name="ssl_error_date_invalid">Даты в сертификате недействительны.</string>
     <string name="ssl_error_invalid">Сертификат недействителен.</string>
     <string name="custom_http_auth_title">Пользовательские диалоги входа</string>
-    <string name="custom_http_auth_summary">Использовать диалог входа Clint, когда сайт запрашивает имя пользователя и пароль. Если выключить, такие сайты не будут загружаться.</string>
+    <string name="custom_http_auth_summary">Использовать диалог входа Clint Browser, когда сайт запрашивает имя пользователя и пароль. Если выключить, такие сайты не будут загружаться.</string>
     <string name="custom_ssl_warnings_title">Пользовательские предупреждения безопасности</string>
-    <string name="custom_ssl_warnings_summary">Показывать предупреждение Clint, если у сайта проблема с сертификатом безопасности, с возможностью продолжить. Если выключить, такие сайты блокируются.</string>
+    <string name="custom_ssl_warnings_summary">Показывать предупреждение Clint Browser, если у сайта проблема с сертификатом безопасности, с возможностью продолжить. Если выключить, такие сайты блокируются.</string>
     <string name="date_time_picker_select_date">Выберите дату</string>
     <string name="date_time_picker_select_time">Выберите время</string>
     <string name="date_time_picker_select_month">Выберите месяц</string>
@@ -113,9 +113,9 @@
     <string name="date_time_picker_previous_year">Предыдущий год</string>
     <string name="date_time_picker_next_year">Следующий год</string>
     <string name="custom_date_time_pickers_title">Пользовательский выбор даты и времени</string>
-    <string name="custom_date_time_pickers_summary">Использовать собственные средства выбора Clint для полей даты, времени, месяца и недели вместо стандартных элементов WebView.</string>
+    <string name="custom_date_time_pickers_summary">Использовать собственные средства выбора Clint Browser для полей даты, времени, месяца и недели вместо стандартных элементов WebView.</string>
     <string name="custom_color_picker_title">Пользовательский выбор цвета</string>
-    <string name="custom_color_picker_summary">Использовать собственное средство выбора цвета Clint для полей цвета вместо стандартного элемента WebView.</string>
+    <string name="custom_color_picker_summary">Использовать собственное средство выбора цвета Clint Browser для полей цвета вместо стандартного элемента WebView.</string>
     <string name="color_picker_select_color">Выберите цвет</string>
     <string name="color_picker_brightness">Яркость</string>
     <string name="color_picker_hex_label">HEX-код</string>
@@ -156,7 +156,7 @@
     <string name="suggestions_api_custom_desc">Добавить свой API подсказок</string>
     <string name="suggestions_api_off">Выключено</string>
     <string name="suggestions_api_off_desc">Без подсказок из интернета</string>
-    <string name="suggestions_google_warning_message">Google будет получать каждый символ, который вы вводите при поиске, привязанный к вашему аккаунту или IP-адресу. Clint не может это предотвратить.\n\nДля большей приватности продолжайте использовать DuckDuckGo.</string>
+    <string name="suggestions_google_warning_message">Google будет получать каждый символ, который вы вводите при поиске, привязанный к вашему аккаунту или IP-адресу. Clint Browser не может это предотвратить.\n\nДля большей приватности продолжайте использовать DuckDuckGo.</string>
     <string name="custom_search_suggestions_api_dialog_title">Пользовательский API поисковых подсказок</string>
     <string name="custom_search_suggestions_api_name_hint">Название</string>
     <string name="custom_search_suggestions_api_name_required">Требуется указать название</string>
@@ -168,12 +168,12 @@
     <string name="default_label">По умолчанию</string>
     <string name="next">Далее \u2192</string>
     <string name="get_started">Начать</string>
-    <string name="setup_subtitle">Приватный браузинг на ваших условиях.\nБез телеметрии. Без слежки.</string>
+    <string name="setup_subtitle">Лёгкий браузер со встроенным ADM, блокировкой рекламы, захватом медиа и поддержкой нескольких профилей</string>
     <string name="js_warning_title">Отключить JavaScript?</string>
     <string name="js_warning_message">Многие функции приложения зависят от JavaScript, включая веб-уведомления, режим ПК и режим чтения. Сайты также могут отображаться некорректно или вовсе не работать.\n\nВы уверены, что хотите его отключить?</string>
     <string name="action_turn_off_anyway">Всё равно отключить</string>
     <string name="google_warning_title">Уведомление о конфиденциальности</string>
-    <string name="google_warning_message">Google будет собирать данные о ваших поисковых запросах и привязывать их к вашему аккаунту или IP-адресу. Clint не может это предотвратить.\n\nДля большей приватности рассмотрите DuckDuckGo или Brave.</string>
+    <string name="google_warning_message">Google будет собирать данные о ваших поисковых запросах и привязывать их к вашему аккаунту или IP-адресу. Clint Browser не может это предотвратить.\n\nДля большей приватности рассмотрите DuckDuckGo или Brave.</string>
     <string name="use_google_anyway">Всё равно использовать Google</string>
     <string name="choose_another">Выбрать другую</string>
     <string name="new_tab">Новая вкладка</string>
@@ -190,7 +190,7 @@
     <string name="about_section_license">ЛИЦЕНЗИЯ</string>
     <string name="about_section_repository">ИСХОДНЫЙ КОД</string>
     <string name="about_created_by">Создано</string>
-    <string name="about_description">Clint — это бесплатный браузер для Android с открытым исходным кодом, у которого нет собственной серверной инфраструктуры, а значит, он не собирает никаких ваших данных. Он предлагает чистый, настраиваемый интерфейс в стиле Material Design, встроенный блокировщик рекламы и трекеров Quiver Guard, а также продвинутый менеджер загрузок и блокировщик сайтов.</string>
+    <string name="about_description">Clint Browser — это бесплатный браузер для Android с открытым исходным кодом, у которого нет собственной серверной инфраструктуры, а значит, он не собирает никаких ваших данных. Он предлагает чистый, настраиваемый интерфейс в стиле Material Design, встроенный блокировщик рекламы и трекеров Quiver Guard, а также продвинутый менеджер загрузок и блокировщик сайтов.</string>
     <string name="about_version_info">Версия: %1$s (сборка %2$d)\nАрхитектура устройства: %3$s</string>
     <string name="about_license_text">Исходный код этого проекта распространяется по лицензии GNU General Public License v3.0 (GPLv3).\n\nНазвания \"Clint\" и \"Clint Browser\", логотип, скриншоты и все связанные фирменные материалы являются товарными знаками или собственностью автора и не подпадают под лицензию GPL. Использование этих материалов требует явного разрешения автора.</string>
     <string name="about_license_link_label">Просмотреть лицензию GPL v3.0 \u2197</string>
@@ -199,11 +199,11 @@
     <string name="about_section_keep_android_open">СОХРАНИМ ANDROID ОТКРЫТЫМ</string>
     <string name="about_keep_android_open_text">Google вводит обязательное требование проверки личности разработчика, которое угрожает сайдлоадингу и независимым экосистемам приложений на Android, включая такие приложения, как это. Узнайте больше и выскажите своё мнение.</string>
     <string name="about_keep_android_open_url">keepandroidopen.org \u2197</string>
-    <string name="support_clint_title">Поддержать Clint</string>
-    <string name="support_clint_summary">Помогите сохранить Clint бесплатным навсегда. Рассмотрите возможность пожертвования разработчику Clint.</string>
+    <string name="support_clint_title">Поддержать Clint Browser</string>
+    <string name="support_clint_summary">Помогите сохранить Clint Browser бесплатным навсегда. Рассмотрите возможность пожертвования разработчику Clint Browser.</string>
     <string name="support_clint_view_supporters_title">Посмотреть текущих спонсоров</string>
-    <string name="support_clint_view_supporters_summary">Посмотрите всех, кто помог поддержать разработку Clint</string>
-    <string name="support_clint_markdown">## Пожертвования\n\nЯ не хочу работать на корпорацию. Я хочу продолжать заниматься тем, что люблю: создавать такие приложения, как Clint, и делать их бесплатно доступными для всех.\n\nЕсли бы я захотел, я мог бы сделать Clint условно-бесплатным и спрятать часть функций за платной подпиской. Вместо этого я решил не делать этого, потому что просто не хочу быть таким разработчиком.\n\nЕсли вам нравится Clint и вы хотите поддержать его разработку, рассмотрите возможность пожертвования. Любой вклад, большой или маленький, помогает мне продолжать разрабатывать и улучшать Clint, пока я ещё учусь в колледже.\n\nЛюбая сумма поможет, и, если хотите, вы также можете получить упоминание как спонсор.\n\nСпасибо, что помогаете мне сохранять Clint бесплатным и независимым.\n\n[![Patreon](https://img.shields.io/badge/Support%20me-Patreon-orange?style=for-the-badge&amp;logo=patreon)](https://patreon.com/Jhaiian)\n[![Ko-fi](https://img.shields.io/badge/Buy%20me%20a%20coffee-Ko--fi-red?style=for-the-badge&amp;logo=ko-fi)](https://ko-fi.com/jhaiian)\n[![PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&amp;logo=paypal)](https://paypal.me/jhaiian)\n[![InstaPay QR](https://img.shields.io/badge/InstaPay%20QR-Philippines%20only-7C3AED?style=for-the-badge)](https://github.com/jhaiian/jhaiian/blob/main/docs/Insta%20Pay.jpg)</string>
+    <string name="support_clint_view_supporters_summary">Посмотрите всех, кто помог поддержать разработку Clint Browser</string>
+    <string name="support_clint_markdown">## Помогите сохранить Clint бесплатным навсегда 💜\n\nClint — независимый проект с открытым исходным кодом, созданный одним разработчиком, который верит, что каждый заслуживает настраиваемого браузера без рекламы, платных барьеров и закрытых функций.\n\nВаши пожертвования помогают развивать и поддерживать проект и работать над будущими улучшениями. Любой вклад, даже самый небольшой, очень важен и помогает Clint двигаться вперёд.\n\nClint всегда останется бесплатным. Спасибо, что вы с нами на этом пути. 💜\n\n[![Patreon](https://img.shields.io/badge/Support%20me-Patreon-orange?style=for-the-badge&amp;logo=patreon)](https://patreon.com/Jhaiian)\n[![Ko-fi](https://img.shields.io/badge/Buy%20me%20a%20coffee-Ko--fi-red?style=for-the-badge&amp;logo=ko-fi)](https://ko-fi.com/jhaiian)\n[![PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&amp;logo=paypal)](https://paypal.me/jhaiian)\n[![InstaPay QR](https://img.shields.io/badge/InstaPay%20QR-Philippines%20only-7C3AED?style=for-the-badge)](https://github.com/jhaiian/jhaiian/blob/main/docs/Insta%20Pay.jpg)</string>
     <string name="default_browser_title">Браузер по умолчанию</string>
     <string name="default_browser_none">Нет</string>
     <string name="look_and_feel">Внешний вид</string>
@@ -354,7 +354,7 @@
     <string name="crash_copy">Скопировать отчёт о сбое</string>
     <string name="crash_delete">Удалить отчёт</string>
     <string name="crash_report_title">СООБЩИТЬ ОБ ОШИБКЕ</string>
-    <string name="crash_report_instructions">Помогите улучшить Clint, сообщая об ошибках на GitHub. Данные не отправляются автоматически \u2014 вы сами решаете, чем делиться.</string>
+    <string name="crash_report_instructions">Помогите улучшить Clint Browser, сообщая об ошибках на GitHub. Данные не отправляются автоматически \u2014 вы сами решаете, чем делиться.</string>
     <string name="crash_steps_title">Как отправить отчёт</string>
     <string name="crash_step_reproduce">Воспроизведите сбой или ошибку</string>
     <string name="crash_step_expand">Откройте запись о сбое, чтобы развернуть её</string>
@@ -370,7 +370,7 @@
     <string name="about_section_contact">КОНТАКТЫ</string>
     <string name="about_contact_email">jhaiian@proton.me</string>
     <string name="about_section_contributors">УЧАСТНИКИ</string>
-    <string name="about_contributors_text">Посмотреть полный список людей, внёсших вклад в Clint.</string>
+    <string name="about_contributors_text">Посмотреть полный список людей, внёсших вклад в Clint Browser.</string>
     <string name="about_contributors_link">Contributors.md \u2197</string>
     <string name="about_section_libraries">ИСПОЛЬЗУЕМЫЕ БИБЛИОТЕКИ</string>
     <string name="about_library_androidx_label">AndroidX от Google</string>
@@ -608,7 +608,7 @@
     <string name="download_storage_permission_message">Доступ к хранилищу нужен для сохранения загруженных файлов в папку «Загрузки».</string>
     <string name="voice_search">Голосовой поиск</string>
     <string name="voice_search_permission_title">Доступ к микрофону</string>
-    <string name="voice_search_permission_message">Clint требуется доступ к микрофону для использования голосового поиска.</string>
+    <string name="voice_search_permission_message">Clint Browser требуется доступ к микрофону для использования голосового поиска.</string>
     <string name="voice_search_not_available">Голосовой поиск недоступен на этом устройстве</string>
 
     <string name="toast_downloading">Загрузка %1$s</string>
@@ -618,7 +618,7 @@
     <string name="install_apk_dialog_message">Установить \"%1$s\"?\n\nУстанавливайте APK только из источников, которым вы доверяете.</string>
     <string name="install_apk_dialog_confirm">Установить</string>
     <string name="install_apk_permission_title">Требуется разрешение</string>
-    <string name="install_apk_permission_message">Для установки APK-файлов Clint требуется разрешение на установку неизвестных приложений. Вы будете перенаправлены в настройки для его включения.</string>
+    <string name="install_apk_permission_message">Для установки APK-файлов Clint Browser требуется разрешение на установку неизвестных приложений. Вы будете перенаправлены в настройки для его включения.</string>
 
     <string name="restart_required_title">Требуется перезапуск</string>
     <string name="restart_required_message">Чтобы изменения вступили в силу, приложению нужно перезапуститься.</string>
@@ -721,9 +721,9 @@
     <string name="download_resumable_no">Возобновляемая: Нет</string>
 
     <string name="setup_default_browser_title">Браузер по умолчанию</string>
-    <string name="setup_default_browser_description">Сделайте Clint браузером по умолчанию, чтобы ссылки из других приложений открывались в нём автоматически. Это полностью необязательно, вы можете изменить это в любой момент в настройках устройства.</string>
+    <string name="setup_default_browser_description">Сделайте Clint Browser браузером по умолчанию, чтобы ссылки из других приложений открывались в нём автоматически. Это полностью необязательно, вы можете изменить это в любой момент в настройках устройства.</string>
     <string name="setup_default_browser_card_title">Сделать браузером по умолчанию</string>
-    <string name="setup_default_browser_card_desc">Нажмите кнопку ниже, чтобы сделать Clint браузером по умолчанию</string>
+    <string name="setup_default_browser_card_desc">Нажмите кнопку ниже, чтобы сделать Clint Browser браузером по умолчанию</string>
     <string name="setup_default_browser_set_button">Сделать браузером по умолчанию</string>
     <string name="setup_default_browser_skip">Пропустить</string>
 
@@ -886,14 +886,14 @@
     <string name="address_bar_position_split_desc">Адресная строка сверху, кнопки навигации под ней</string>
     <string name="setup_status_bar_applied_later">Это будет применено после завершения настройки.</string>
 
-    <string name="setup_welcome_title">Добро пожаловать в Clint</string>
+    <string name="setup_welcome_title">Добро пожаловать в Clint Browser</string>
     <string name="setup_welcome_subtitle">Прежде чем начать, ознакомьтесь с нашими условиями.</string>
     <string name="setup_terms_read">Читать</string>
     <string name="setup_terms_agree">Я прочитал(а) и согласен(на) с Политикой конфиденциальности и Условиями использования</string>
     <string name="setup_terms_continue">Принять и продолжить</string>
 
     <string name="setup_restore_title">Восстановить из резервной копии</string>
-    <string name="setup_restore_subtitle">Есть резервная копия Clint? Восстановите её сейчас, чтобы вернуть свои настройки и данные, либо пропустите и настройте заново.</string>
+    <string name="setup_restore_subtitle">Есть резервная копия Clint Browser? Восстановите её сейчас, чтобы вернуть свои настройки и данные, либо пропустите и настройте заново.</string>
     <string name="setup_restore_card_title">Восстановить резервную копию</string>
     <string name="setup_restore_card_desc">Выберите файл .clintbackup на вашем устройстве</string>
     <string name="setup_restore_button">Восстановить резервную копию</string>
@@ -988,7 +988,7 @@
     <string name="exit_confirmation_dialog_desc">Показывает диалог подтверждения перед выходом</string>
     <string name="exit_tap_again">Нажмите ещё раз для выхода</string>
     <string name="exit_dialog_title">Выйти?</string>
-    <string name="exit_dialog_message">Вы уверены, что хотите выйти из Clint?</string>
+    <string name="exit_dialog_message">Вы уверены, что хотите выйти из Clint Browser?</string>
     <string name="exit_dialog_confirm">Выйти</string>
 
     <string name="image_open_in_new_tab">Открыть изображение в новой вкладке</string>
@@ -1140,7 +1140,7 @@
     <string name="site_permission_items_deleted">Исключения удалены</string>
 
     <string name="battery_opt_rationale_title">Разрешить фоновые загрузки</string>
-    <string name="battery_opt_rationale_message">Чтобы загрузки продолжались при переключении на другое приложение, разрешите Clint игнорировать оптимизацию батареи. Без этого система может приостанавливать или отменять активные загрузки, пока приложение находится в фоне.</string>
+    <string name="battery_opt_rationale_message">Чтобы загрузки продолжались при переключении на другое приложение, разрешите Clint Browser игнорировать оптимизацию батареи. Без этого система может приостанавливать или отменять активные загрузки, пока приложение находится в фоне.</string>
     <string name="download_metered_warning_title">Обнаружена лимитная сеть</string>
     <string name="download_metered_warning_message">Включён режим «Только безлимитная сеть», но вы подключены к лимитной сети. Использовать лимитную сеть для загрузки этого файла?</string>
     <string name="action_download_anyway">Всё равно загрузить</string>
@@ -1495,9 +1495,9 @@
     <string name="restore_action_continue">Продолжить</string>
 
     <string name="restore_invalid_title">Недействительный файл резервной копии</string>
-    <string name="restore_invalid_message">Этот файл не является поддерживаемой резервной копией Clint либо повреждён.</string>
+    <string name="restore_invalid_message">Этот файл не является поддерживаемой резервной копией Clint Browser либо повреждён.</string>
     <string name="restore_unsupported_title">Неподдерживаемая версия резервной копии</string>
-    <string name="restore_unsupported_message">Эта резервная копия была создана более новой версией Clint и не может быть восстановлена здесь.</string>
+    <string name="restore_unsupported_message">Эта резервная копия была создана более новой версией Clint Browser и не может быть восстановлена здесь.</string>
     <string name="restore_generic_error_title">Не удалось открыть резервную копию</string>
     <string name="restore_generic_error_message">Что-то пошло не так при чтении файла резервной копии.</string>
 
@@ -1508,7 +1508,7 @@
     <string name="restore_confirm_message">Восстановление перезапишет текущие данные для выбранных категорий. Это действие нельзя отменить.</string>
 
     <string name="restore_result_success_title">Восстановление завершено</string>
-    <string name="restore_result_success_message">Ваши данные восстановлены. Для применения изменений Clint нужно перезапустить.</string>
+    <string name="restore_result_success_message">Ваши данные восстановлены. Для применения изменений Clint Browser нужно перезапустить.</string>
     <string name="restore_result_partial_note">Не найдено в этой резервной копии: %1$s</string>
     <string name="restore_result_error_title">Ошибка восстановления</string>
     <string name="restore_result_error_message">Что-то пошло не так при восстановлении ваших данных.</string>
@@ -1754,11 +1754,11 @@
     <string name="homepage_image_title">Изображение домашней страницы</string>
     <string name="homepage_image_summary">Нажмите, чтобы выбрать другое фото</string>
     <string name="homepage_show_favorites_title">Показывать избранное</string>
-    <string name="homepage_show_favorites_summary">Закладки на домашней странице Clint</string>
+    <string name="homepage_show_favorites_summary">Закладки на домашней странице Clint Browser</string>
     <string name="homepage_show_recent_title">Показывать недавно посещённые</string>
-    <string name="homepage_show_recent_summary">Сайты, которые вы недавно открывали, на домашней странице Clint</string>
+    <string name="homepage_show_recent_summary">Сайты, которые вы недавно открывали, на домашней странице Clint Browser</string>
     <string name="homepage_center_content_title">Центрировать содержимое</string>
-    <string name="homepage_center_content_summary">Выравнивать содержимое домашней страницы Clint по центру экрана</string>
+    <string name="homepage_center_content_summary">Выравнивать содержимое домашней страницы Clint Browser по центру экрана</string>
     <string name="homepage_image_error">Не удалось использовать это изображение. Попробуйте другое.</string>
     <string name="home_greeting_morning">Доброе утро</string>
     <string name="home_greeting_afternoon">Добрый день</string>

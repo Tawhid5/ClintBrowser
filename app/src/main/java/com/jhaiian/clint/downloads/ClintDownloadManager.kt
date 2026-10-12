@@ -41,6 +41,29 @@ object ClintDownloadManager {
 
     internal val activeJobs: MutableMap<Int, Job> = ConcurrentHashMap()
 
+    internal class CallTag(val id: Int)
+
+    internal val jobRegistry: MutableMap<Int, MutableSet<Job>> = ConcurrentHashMap()
+
+    internal fun registerJob(id: Int, job: Job) {
+        jobRegistry.getOrPut(id) { ConcurrentHashMap.newKeySet() }.add(job)
+        job.invokeOnCompletion {
+            jobRegistry[id]?.let { set ->
+                set.remove(job)
+                if (set.isEmpty()) jobRegistry.remove(id, set)
+            }
+        }
+    }
+
+    internal fun cancelCalls(id: Int) {
+        val dispatcher = httpClient.dispatcher
+        (dispatcher.runningCalls() + dispatcher.queuedCalls()).forEach { call ->
+            if (call.request().tag(CallTag::class.java)?.id == id) call.cancel()
+        }
+    }
+
+    internal fun isRemoved(id: Int): Boolean = id in removedIds
+
     internal val activeSpeedLimiters: MutableMap<Int, SpeedLimiter> = ConcurrentHashMap()
 
     internal val pauseRequested: MutableSet<Int> = ConcurrentHashMap.newKeySet()
@@ -181,6 +204,7 @@ object ClintDownloadManager {
             persistDownload(item)
             DownloadWorker.run(appContext, item)
         }
+        registerJob(item.id, job)
         activeJobs[item.id] = job
         job.invokeOnCompletion {
             activeJobs.remove(item.id, job)
@@ -195,6 +219,7 @@ object ClintDownloadManager {
             persistDownload(item)
             com.jhaiian.clint.mediacapture.download.StreamDownloadJob.run(appContext, item)
         }
+        registerJob(item.id, job)
         activeJobs[item.id] = job
         job.invokeOnCompletion {
             activeJobs.remove(item.id, job)
@@ -405,6 +430,7 @@ object ClintDownloadManager {
                 DownloadWorker.fail(context, current, e.message ?: context.getString(R.string.download_error_unknown))
             }
         }
+        registerJob(id, job)
         activeJobs[id] = job
         job.invokeOnCompletion { activeJobs.remove(id, job) }
     }
@@ -604,14 +630,25 @@ object ClintDownloadManager {
         DownloadNetworkMonitor.networkWaitingIds.remove(id)
         DownloadCustomScheduleMonitor.cancel(context, id)
         val item = downloadsFlow.value.find { it.id == id }
-        val job = activeJobs[id]
-        job?.cancel()
-        context.getSystemService(NotificationManager::class.java).cancel(id)
+        val jobs = (jobRegistry[id]?.toList() ?: emptyList()) + listOfNotNull(activeJobs[id])
+        jobs.forEach { it.cancel() }
+        cancelCalls(id)
+        val nm = context.getSystemService(NotificationManager::class.java)
+        nm.cancel(id)
         DownloadNotificationHelper.cancelCompleteNotification(context, id)
         _downloads.update { list -> list.filterNot { it.id == id } }
         val appCtx = appContext
         applicationScope.launch {
-            job?.join()
+            jobs.forEach { j ->
+                var attempts = 0
+                while (!j.isCompleted && attempts < 50) {
+                    cancelCalls(id)
+                    kotlinx.coroutines.withTimeoutOrNull(200L) { j.join() }
+                    attempts++
+                }
+            }
+            nm.cancel(id)
+            DownloadNotificationHelper.cancelCompleteNotification(context, id)
             if (deleteFile) {
                 item?.file?.delete()
                 item?.contentUri?.let { uriStr ->

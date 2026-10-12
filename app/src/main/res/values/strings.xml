@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Clint</string>
+    <string name="app_name">Clint Browser</string>
     <string name="clint_downloader_label">Clint Downloader</string>
     <string name="back">Back</string>
     <string name="forward">Forward</string>
@@ -66,9 +66,9 @@
     </plurals>
     <string name="pref_category_custom_prompts">Custom Browser Prompts</string>
     <string name="custom_select_menus_title">Custom Select Menus</string>
-    <string name="custom_select_menus_summary">Use Clint\'s custom picker for \"&lt;select&gt;\" dropdowns instead of the WebView default.</string>
+    <string name="custom_select_menus_summary">Use Clint Browser\'s custom picker for \"&lt;select&gt;\" dropdowns instead of the WebView default.</string>
     <string name="custom_js_dialogs_title">Custom JavaScript Dialogs</string>
-    <string name="custom_js_dialogs_summary">Use Clint\'s custom dialogs for alert(), confirm(), and prompt() instead of the WebView default.</string>
+    <string name="custom_js_dialogs_summary">Use Clint Browser\'s custom dialogs for alert(), confirm(), and prompt() instead of the WebView default.</string>
     <string name="js_dialog_title">%1$s says</string>
     <string name="js_before_unload_title">Leave site?</string>
     <string name="js_before_unload_message">Changes you made may not be saved.</string>
@@ -92,9 +92,9 @@
     <string name="ssl_error_date_invalid">The certificate\'s dates are invalid.</string>
     <string name="ssl_error_invalid">The certificate is invalid.</string>
     <string name="custom_http_auth_title">Custom Login Dialogs</string>
-    <string name="custom_http_auth_summary">Use Clint\'s sign-in dialog when a website asks for a username and password. When off, those sites won\'t load.</string>
+    <string name="custom_http_auth_summary">Use Clint Browser\'s sign-in dialog when a website asks for a username and password. When off, those sites won\'t load.</string>
     <string name="custom_ssl_warnings_title">Custom Security Warnings</string>
-    <string name="custom_ssl_warnings_summary">Show Clint\'s warning when a website\'s security certificate has a problem, with the option to continue. When off, those sites are blocked.</string>
+    <string name="custom_ssl_warnings_summary">Show Clint Browser\'s warning when a website\'s security certificate has a problem, with the option to continue. When off, those sites are blocked.</string>
     <string name="date_time_picker_select_date">Select date</string>
     <string name="date_time_picker_select_time">Select time</string>
     <string name="date_time_picker_select_month">Select month</string>
@@ -107,9 +107,9 @@
     <string name="date_time_picker_previous_year">Previous year</string>
     <string name="date_time_picker_next_year">Next year</string>
     <string name="custom_date_time_pickers_title">Custom Date &amp; Time Pickers</string>
-    <string name="custom_date_time_pickers_summary">Use Clint\'s custom pickers for date, time, month, and week fields instead of the WebView default.</string>
+    <string name="custom_date_time_pickers_summary">Use Clint Browser\'s custom pickers for date, time, month, and week fields instead of the WebView default.</string>
     <string name="custom_color_picker_title">Custom Color Picker</string>
-    <string name="custom_color_picker_summary">Use Clint\'s custom color picker for color fields instead of the WebView default.</string>
+    <string name="custom_color_picker_summary">Use Clint Browser\'s custom color picker for color fields instead of the WebView default.</string>
     <string name="color_picker_select_color">Select color</string>
     <string name="color_picker_brightness">Brightness</string>
     <string name="color_picker_hex_label">Hex code</string>
@@ -150,7 +150,7 @@
     <string name="suggestions_api_custom_desc">Add your own suggestions API</string>
     <string name="suggestions_api_off">Off</string>
     <string name="suggestions_api_off_desc">No suggestions from the web</string>
-    <string name="suggestions_google_warning_message">Google will receive every character you type as you search, associated with your account or IP address. Clint cannot prevent this.\n\nFor better privacy, keep using DuckDuckGo.</string>
+    <string name="suggestions_google_warning_message">Google will receive every character you type as you search, associated with your account or IP address. Clint Browser cannot prevent this.\n\nFor better privacy, keep using DuckDuckGo.</string>
     <string name="custom_search_suggestions_api_dialog_title">Custom Search Suggestions API</string>
     <string name="custom_search_suggestions_api_name_hint">Name</string>
     <string name="custom_search_suggestions_api_name_required">Name is required</string>
@@ -162,12 +162,12 @@
     <string name="default_label">Default</string>
     <string name="next">Next \u2192</string>
     <string name="get_started">Get Started</string>
-    <string name="setup_subtitle">The Browser That Does More.</string>
+    <string name="setup_subtitle">Lightweight browser with ADM, ad blocking, media capture, and multi-profile support</string>
     <string name="js_warning_title">Disable JavaScript?</string>
     <string name="js_warning_message">Many app features rely on JavaScript, including web notifications, desktop mode, and reader mode. Websites may also break or display incorrectly.\n\nAre you sure you want to turn it off?</string>
     <string name="action_turn_off_anyway">Turn off anyway</string>
     <string name="google_warning_title">Privacy notice</string>
-    <string name="google_warning_message">Google will collect your search data and associate it with your account or IP address. Clint cannot prevent this.\n\nFor better privacy, consider DuckDuckGo or Brave instead.</string>
+    <string name="google_warning_message">Google will collect your search data and associate it with your account or IP address. Clint Browser cannot prevent this.\n\nFor better privacy, consider DuckDuckGo or Brave instead.</string>
     <string name="use_google_anyway">Use Google anyway</string>
     <string name="choose_another">Choose another</string>
     <string name="new_tab">New Tab</string>
@@ -184,7 +184,7 @@
     <string name="about_section_license">LICENSE</string>
     <string name="about_section_repository">SOURCE CODE</string>
     <string name="about_created_by">Created by</string>
-    <string name="about_description">An open source Android browser with no dedicated backend and tons of features that typical browsers have, while offering a modern UI built around Material 3.\n\nWe respect your privacy, so the app doesn\u2019t collect any kind of data. We don\u2019t even count how many active users there are. We collect zero data whatsoever.\n\nClint\u2019s goal is to create an Android browser that does more while being pleasant to look at and highly customizable, with no ads and no paywalls. Clint is completely free to use.</string>
+    <string name="about_description">An open source Android browser with no dedicated backend and tons of features that typical browsers have, while offering a modern UI built around Material 3.\n\nWe respect your privacy, so the app doesn\u2019t collect any kind of data. We don\u2019t even count how many active users there are. We collect zero data whatsoever.\n\nClint\u2019s goal is to create an Android browser that does more while being pleasant to look at and highly customizable, with no ads and no paywalls. Clint Browser is completely free to use.</string>
     <string name="about_version_info">Version: %1$s (build %2$d)\nDevice architecture: %3$s</string>
     <string name="about_license_text">The source code of this project is licensed under the GNU General Public License v3.0 (GPLv3).\n\nThe names \"Clint\" and \"Clint Browser,\" the logo, screenshots, and all related branding assets are trademarks or proprietary assets of the author and are not licensed under the GPL. Use of these assets requires explicit permission from the author.</string>
     <string name="about_license_link_label">View GPL v3.0 license \u2197</string>
@@ -193,11 +193,11 @@
     <string name="about_section_keep_android_open">KEEP ANDROID OPEN</string>
     <string name="about_keep_android_open_text">Google is rolling out a mandatory developer identity verification requirement that threatens sideloading and independent app ecosystems on Android, including apps like this one. Learn more and add your voice.</string>
     <string name="about_keep_android_open_url">keepandroidopen.org \u2197</string>
-    <string name="support_clint_title">Support Clint</string>
-    <string name="support_clint_summary">Help keep Clint free forever. Consider making a donation to the Clint developer.</string>
+    <string name="support_clint_title">Support Clint Browser</string>
+    <string name="support_clint_summary">Help keep Clint Browser free forever. Consider making a donation to the Clint Browser developer.</string>
     <string name="support_clint_view_supporters_title">View Current Supporters</string>
-    <string name="support_clint_view_supporters_summary">See everyone who has helped support Clint\u2019s development</string>
-    <string name="support_clint_markdown">## Donations\n\nI don\u2019t want to work for a corporation. I want to keep doing what I love: building apps like Clint and making them freely available to everyone.\n\nIf I wanted to, I could make Clint freemium and put some features behind a paywall. Instead, I choose not to because that\u2019s simply not the kind of developer I want to be.\n\nIf you enjoy Clint and want to support its development, consider making a donation. Every contribution, big or small, helps me continue developing and improving Clint while I\u2019m still in college.\n\nAny amount helps, and if you\u2019d like, you can also get a shoutout as a supporter.\n\nThanks for helping me keep Clint free and independent.\n\n[![Patreon](https://img.shields.io/badge/Support%20me-Patreon-orange?style=for-the-badge&amp;logo=patreon)](https://patreon.com/Jhaiian)\n[![Ko-fi](https://img.shields.io/badge/Buy%20me%20a%20coffee-Ko--fi-red?style=for-the-badge&amp;logo=ko-fi)](https://ko-fi.com/jhaiian)\n[![PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&amp;logo=paypal)](https://paypal.me/jhaiian)\n[![InstaPay QR](https://img.shields.io/badge/InstaPay%20QR-Philippines%20only-7C3AED?style=for-the-badge)](https://github.com/jhaiian/jhaiian/blob/main/docs/Insta%20Pay.jpg)</string>
+    <string name="support_clint_view_supporters_summary">See everyone who has helped support Clint Browser\u2019s development</string>
+    <string name="support_clint_markdown">## Help Keep Clint Free Forever 💜\n\nClint is an independent, open-source project built by one developer who believes everyone deserves a customizable browsing experience without ads, paywalls, or locked features.\n\nYour donations help support continued development, maintenance, and future improvements. Every contribution, no matter how small, means a lot and helps keep Clint moving forward.\n\nClint will always remain free. Thank you for being part of this journey. 💜\n\n[![Patreon](https://img.shields.io/badge/Support%20me-Patreon-orange?style=for-the-badge&amp;logo=patreon)](https://patreon.com/Jhaiian)\n[![Ko-fi](https://img.shields.io/badge/Buy%20me%20a%20coffee-Ko--fi-red?style=for-the-badge&amp;logo=ko-fi)](https://ko-fi.com/jhaiian)\n[![PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&amp;logo=paypal)](https://paypal.me/jhaiian)\n[![InstaPay QR](https://img.shields.io/badge/InstaPay%20QR-Philippines%20only-7C3AED?style=for-the-badge)](https://github.com/jhaiian/jhaiian/blob/main/docs/Insta%20Pay.jpg)</string>
     <string name="default_browser_title">Default Browser</string>
     <string name="default_browser_none">None</string>
     <string name="look_and_feel">Look &amp; Feel</string>
@@ -348,7 +348,7 @@
     <string name="crash_copy">Copy crash report</string>
     <string name="crash_delete">Delete report</string>
     <string name="crash_report_title">FILE A BUG REPORT</string>
-    <string name="crash_report_instructions">Help improve Clint by reporting bugs on GitHub. No data is sent automatically \u2014 you choose what to share.</string>
+    <string name="crash_report_instructions">Help improve Clint Browser by reporting bugs on GitHub. No data is sent automatically \u2014 you choose what to share.</string>
     <string name="crash_steps_title">How to file a report</string>
     <string name="crash_step_reproduce">Reproduce the crash or bug</string>
     <string name="crash_step_expand">Open the crash entry to expand it</string>
@@ -364,7 +364,7 @@
     <string name="about_section_contact">CONTACT</string>
     <string name="about_contact_email">jhaiian@proton.me</string>
     <string name="about_section_contributors">CONTRIBUTORS</string>
-    <string name="about_contributors_text">View the full list of people who contributed to Clint.</string>
+    <string name="about_contributors_text">View the full list of people who contributed to Clint Browser.</string>
     <string name="about_contributors_link">Contributors.md \u2197</string>
     <string name="about_section_libraries">USED LIBRARIES</string>
     <string name="about_library_androidx_label">AndroidX by Google</string>
@@ -602,7 +602,7 @@
     <string name="download_storage_permission_message">Storage access is needed to save downloaded files to your Downloads folder.</string>
     <string name="voice_search">Voice search</string>
     <string name="voice_search_permission_title">Microphone access</string>
-    <string name="voice_search_permission_message">Clint needs microphone access to use voice search.</string>
+    <string name="voice_search_permission_message">Clint Browser needs microphone access to use voice search.</string>
     <string name="voice_search_not_available">Voice search is not available on this device</string>
 
     <string name="toast_downloading">Downloading %1$s</string>
@@ -612,7 +612,7 @@
     <string name="install_apk_dialog_message">Do you want to install \"%1$s\"?\n\nOnly install APKs from sources you trust.</string>
     <string name="install_apk_dialog_confirm">Install</string>
     <string name="install_apk_permission_title">Permission required</string>
-    <string name="install_apk_permission_message">To install APK files, Clint needs permission to install unknown apps. You\'ll be taken to Settings to enable it.</string>
+    <string name="install_apk_permission_message">To install APK files, Clint Browser needs permission to install unknown apps. You\'ll be taken to Settings to enable it.</string>
 
     <string name="restart_required_title">Restart required</string>
     <string name="restart_required_message">The app needs to restart for this change to take effect.</string>
@@ -715,9 +715,9 @@
     <string name="download_resumable_no">Resume: No</string>
 
     <string name="setup_default_browser_title">Default Browser</string>
-    <string name="setup_default_browser_description">Make Clint your default browser so links from other apps open here automatically. This is completely optional, you can change it at any time in your device settings.</string>
+    <string name="setup_default_browser_description">Make Clint Browser your default browser so links from other apps open here automatically. This is completely optional, you can change it at any time in your device settings.</string>
     <string name="setup_default_browser_card_title">Set as Default Browser</string>
-    <string name="setup_default_browser_card_desc">Tap the button below to set Clint as your default browser</string>
+    <string name="setup_default_browser_card_desc">Tap the button below to set Clint Browser as your default browser</string>
     <string name="setup_default_browser_set_button">Set as Default Browser</string>
     <string name="setup_default_browser_skip">Skip</string>
 
@@ -880,14 +880,14 @@
     <string name="address_bar_position_split_desc">Address bar at top with navigation buttons below</string>
     <string name="setup_status_bar_applied_later">It will be applied once the setup is finished.</string>
 
-    <string name="setup_welcome_title">Welcome to Clint</string>
+    <string name="setup_welcome_title">Welcome to Clint Browser</string>
     <string name="setup_welcome_subtitle">Before you get started, please review our terms.</string>
     <string name="setup_terms_read">Read</string>
     <string name="setup_terms_agree">I have read and agree to the Privacy Policy and Terms of Service</string>
     <string name="setup_terms_continue">Agree &amp; Continue</string>
 
     <string name="setup_restore_title">Restore from Backup</string>
-    <string name="setup_restore_subtitle">Have a Clint backup? Restore it now to bring back your settings and data, or skip to set up as new.</string>
+    <string name="setup_restore_subtitle">Have a Clint Browser backup? Restore it now to bring back your settings and data, or skip to set up as new.</string>
     <string name="setup_restore_card_title">Restore Backup</string>
     <string name="setup_restore_card_desc">Choose a .clintbackup file from your device</string>
     <string name="setup_restore_button">Restore Backup</string>
@@ -982,7 +982,7 @@
     <string name="exit_confirmation_dialog_desc">Shows a confirmation dialog before exiting</string>
     <string name="exit_tap_again">Tap again to exit</string>
     <string name="exit_dialog_title">Exit?</string>
-    <string name="exit_dialog_message">Are you sure you want to exit Clint?</string>
+    <string name="exit_dialog_message">Are you sure you want to exit Clint Browser?</string>
     <string name="exit_dialog_confirm">Exit</string>
 
     <string name="image_open_in_new_tab">Open image in new tab</string>
@@ -1134,7 +1134,7 @@
     <string name="site_permission_items_deleted">Exceptions removed</string>
 
     <string name="battery_opt_rationale_title">Allow background downloads</string>
-    <string name="battery_opt_rationale_message">For downloads to keep running when you switch to another app, allow Clint to ignore battery optimization. Without this, the system may pause or cancel active downloads while the app is in the background.</string>
+    <string name="battery_opt_rationale_message">For downloads to keep running when you switch to another app, allow Clint Browser to ignore battery optimization. Without this, the system may pause or cancel active downloads while the app is in the background.</string>
     <string name="download_metered_warning_title">Metered network detected</string>
     <string name="download_metered_warning_message">Unmetered Only is enabled, but you\'re connected to a metered network. Do you want to use metered network to download this file?</string>
     <string name="action_download_anyway">Download anyway</string>
@@ -1475,9 +1475,9 @@
     <string name="restore_action_continue">Continue</string>
 
     <string name="restore_invalid_title">Invalid Backup File</string>
-    <string name="restore_invalid_message">This file isn\'t a supported Clint backup, or it\'s corrupted.</string>
+    <string name="restore_invalid_message">This file isn\'t a supported Clint Browser backup, or it\'s corrupted.</string>
     <string name="restore_unsupported_title">Unsupported Backup Version</string>
-    <string name="restore_unsupported_message">This backup was created with a newer version of Clint and can\'t be restored here.</string>
+    <string name="restore_unsupported_message">This backup was created with a newer version of Clint Browser and can\'t be restored here.</string>
     <string name="restore_generic_error_title">Couldn\'t Open Backup</string>
     <string name="restore_generic_error_message">Something went wrong while reading the backup file.</string>
 
@@ -1488,7 +1488,7 @@
     <string name="restore_confirm_message">Restoring will overwrite your current data for the selected categories. This can\'t be undone.</string>
 
     <string name="restore_result_success_title">Restore Complete</string>
-    <string name="restore_result_success_message">Your data has been restored. Clint needs to restart to apply the changes.</string>
+    <string name="restore_result_success_message">Your data has been restored. Clint Browser needs to restart to apply the changes.</string>
     <string name="restore_result_partial_note">Not found in this backup: %1$s</string>
     <string name="restore_result_error_title">Restore Failed</string>
     <string name="restore_result_error_message">Something went wrong while restoring your data.</string>
@@ -1734,11 +1734,11 @@
     <string name="homepage_image_title">Homepage Image</string>
     <string name="homepage_image_summary">Tap to choose a different photo</string>
     <string name="homepage_show_favorites_title">Show Favorites</string>
-    <string name="homepage_show_favorites_summary">Display your bookmarks on the Clint homepage</string>
+    <string name="homepage_show_favorites_summary">Display your bookmarks on the Clint Browser homepage</string>
     <string name="homepage_show_recent_title">Show Recently Visited</string>
-    <string name="homepage_show_recent_summary">Display sites you visited lately on the Clint homepage</string>
+    <string name="homepage_show_recent_summary">Display sites you visited lately on the Clint Browser homepage</string>
     <string name="homepage_center_content_title">Center Content</string>
-    <string name="homepage_center_content_summary">Vertically center the Clint homepage content on the screen</string>
+    <string name="homepage_center_content_summary">Vertically center the Clint Browser homepage content on the screen</string>
     <string name="homepage_image_error">Couldn\'t use that image. Please try another one.</string>
     <string name="home_greeting_morning">Good morning</string>
     <string name="home_greeting_afternoon">Good afternoon</string>

@@ -6,7 +6,7 @@
 
 **Customizable Layered Internet Navigation Tool**
 
-The Android Browser That Does More
+Lightweight browser with ADM, ad blocking, media capture, and multi-profile support
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blueviolet.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Android%208.0%2B-blueviolet.svg)](https://developer.android.com)
@@ -19,13 +19,15 @@ The Android Browser That Does More
 
 ---
 
-## What is Clint?
+## What is Clint Browser?
 
 An open source Android browser with no dedicated backend and tons of features that typical browsers have, while offering a modern UI built around Material 3.
 
 We respect your privacy, so the app doesn't collect any kind of data. We don't even count how many active users there are. We collect zero data whatsoever.
 
-Clint's goal is to create an Android browser that does more while being pleasant to look at and highly customizable, with no ads and no paywalls. Clint is completely free to use.
+Clint Browser's goal is to create an Android browser that does more while being pleasant to look at and highly customizable, with no ads and no paywalls. Clint Browser is completely free to use.
+
+Looking for a Firefox-based version with extensions and background playback? Check out [Clint Gecko](https://github.com/jhaiian/ClintGecko), the official fork of Clint Browser built on GeckoView.
 
 Built and maintained by **[@jhaiian](https://github.com/jhaiian)** — a solo developer from the Philippines 🇵🇭
 
@@ -75,7 +77,7 @@ Built and maintained by **[@jhaiian](https://github.com/jhaiian)** — a solo de
 
 ### 🎨 UI & Customization
 
-Clint is built with **Material 3** and **Jetpack Compose**, with a highly customizable interface.
+Clint Browser is built with **Material 3** and **Jetpack Compose**, with a highly customizable interface.
 
 - 50 accent colors
 - Light and Dark themes
@@ -123,15 +125,13 @@ Clint is built with **Material 3** and **Jetpack Compose**, with a highly custom
 
 ## Donations
 
-I don't want to work for a corporation. I want to keep doing what I love: building apps like Clint and making them freely available to everyone.
+### Help Keep Clint Free Forever 💜
 
-If I wanted to, I could make Clint freemium and put some features behind a paywall. Instead, I choose not to because that's simply not the kind of developer I want to be.
+Clint is an independent, open-source project built by one developer who believes everyone deserves a customizable browsing experience without ads, paywalls, or locked features.
 
-If you enjoy Clint and want to support its development, consider making a donation. Every contribution, big or small, helps me continue developing and improving Clint while I'm still in college.
+Your donations help support continued development, maintenance, and future improvements. Every contribution, no matter how small, means a lot and helps keep Clint moving forward.
 
-Any amount helps, and if you'd like, you can also get a shoutout as a supporter.
-
-Thanks for helping me keep Clint free and independent.
+Clint will always remain free. Thank you for being part of this journey. 💜
 
 [![Patreon](https://img.shields.io/badge/Support%20me-Patreon-orange?style=for-the-badge&logo=patreon)](https://patreon.com/Jhaiian)
 [![Ko-fi](https://img.shields.io/badge/Buy%20me%20a%20coffee-Ko--fi-red?style=for-the-badge&logo=ko-fi)](https://ko-fi.com/jhaiian)

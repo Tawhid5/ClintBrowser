@@ -96,6 +96,7 @@ internal object DownloadWorker {
 
             val request = Request.Builder()
                 .url(item.url)
+                .tag(ClintDownloadManager.CallTag::class.java, ClintDownloadManager.CallTag(item.id))
                 .header("User-Agent", item.userAgent)
                 .header("Accept", "*/*")
                 .header("Accept-Language", "en-US,en;q=0.9")
@@ -106,8 +107,15 @@ internal object DownloadWorker {
                 }
                 .build()
 
+            if (ClintDownloadManager.isRemoved(item.id)) throw CancellationException("removed")
+
             val response = withContext(Dispatchers.IO) {
                 runInterruptible { ClintDownloadManager.httpClient.newCall(request).execute() }
+            }
+
+            if (ClintDownloadManager.isRemoved(item.id)) {
+                response.close()
+                throw CancellationException("removed")
             }
 
             if (ClintDownloadManager.pauseRequested.remove(item.id)) {
@@ -326,10 +334,12 @@ internal object DownloadWorker {
                             inputStream.use { input ->
                                 val buffer = ByteArray(65536)
                                 while (true) {
+                                    if (ClintDownloadManager.isRemoved(current.id)) throw CancellationException("removed")
                                     if (ClintDownloadManager.pauseRequested.contains(current.id)) break
                                     val read = try {
                                         input.read(buffer)
                                     } catch (e: IOException) {
+                                        if (ClintDownloadManager.isRemoved(current.id)) throw CancellationException("removed")
                                         if (ClintDownloadManager.pauseRequested.contains(current.id)) break else throw e
                                     }
                                     if (read == -1) {
@@ -591,6 +601,11 @@ internal object DownloadWorker {
             while (true) {
                 delay(MONITOR_TICK_MS)
 
+                if (ClintDownloadManager.isRemoved(item.id)) {
+                    partJobs.forEach { it.cancel() }
+                    throw CancellationException("removed")
+                }
+
                 val total = partBytesDownloaded.sumOf { it.get() }
                 item = item.copy(bytesDownloaded = total)
                 if (total - lastNotifyBytes >= 65536) {
@@ -673,6 +688,7 @@ internal object DownloadWorker {
     ) {
         var attempt = 0
         while (attempt < MAX_PART_RETRIES) {
+            if (ClintDownloadManager.isRemoved(item.id)) return
             if (firstError.get() != null || ClintDownloadManager.pauseRequested.contains(item.id) || rateLimitDetected.get()) return
 
             val waitMs = rateLimitUntilMs.get() - System.currentTimeMillis()
@@ -690,6 +706,7 @@ internal object DownloadWorker {
             try {
                 val request = Request.Builder()
                     .url(item.url)
+                    .tag(ClintDownloadManager.CallTag::class.java, ClintDownloadManager.CallTag(item.id))
                     .header("User-Agent", item.userAgent)
                     .header("Accept", "*/*")
                     .header("Accept-Language", "en-US,en;q=0.9")
@@ -703,7 +720,7 @@ internal object DownloadWorker {
                 val call = ClintDownloadManager.httpClient.newCall(request)
                 val callWatcher = ClintDownloadManager.applicationScope.launch(Dispatchers.IO) {
                     while (isActive) {
-                        if (firstError.get() != null || ClintDownloadManager.pauseRequested.contains(item.id) || rateLimitDetected.get()) {
+                        if (ClintDownloadManager.isRemoved(item.id) || firstError.get() != null || ClintDownloadManager.pauseRequested.contains(item.id) || rateLimitDetected.get()) {
                             call.cancel()
                             break
                         }
@@ -753,7 +770,8 @@ internal object DownloadWorker {
                                         raf.seek(resumeStart)
                                         val buffer = ByteArray(32768)
                                         while (true) {
-                                            if (firstError.get() != null
+                                            if (ClintDownloadManager.isRemoved(item.id)
+                                                || firstError.get() != null
                                                 || Thread.currentThread().isInterrupted
                                                 || ClintDownloadManager.pauseRequested.contains(item.id)
                                                 || rateLimitDetected.get()
@@ -805,6 +823,8 @@ internal object DownloadWorker {
         safMode: Boolean
     ) {
         var item = initialItem
+
+        if (ClintDownloadManager.isRemoved(item.id)) throw CancellationException("removed")
 
         fun interruptedProgress(): DownloadItem {
             val total = partBytesDownloaded.sumOf { it.get() }

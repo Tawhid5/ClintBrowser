@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Clint</string>
+    <string name="app_name">Clint Browser</string>
     <string name="clint_downloader_label">Clint Downloader</string>
     <string name="back">Bumalik</string>
     <string name="forward">Pasulong</string>
@@ -66,9 +66,9 @@
     </plurals>
     <string name="pref_category_custom_prompts">Custom Browser Prompts</string>
     <string name="custom_select_menus_title">Custom Select Menus</string>
-    <string name="custom_select_menus_summary">Gamitin ang custom picker ng Clint para sa mga \"&lt;select&gt;\" dropdown sa halip na ang default ng WebView.</string>
+    <string name="custom_select_menus_summary">Gamitin ang custom picker ng Clint Browser para sa mga \"&lt;select&gt;\" dropdown sa halip na ang default ng WebView.</string>
     <string name="custom_js_dialogs_title">Custom JavaScript Dialogs</string>
-    <string name="custom_js_dialogs_summary">Gamitin ang custom na dialog ng Clint para sa alert(), confirm(), at prompt() sa halip na ang default ng WebView.</string>
+    <string name="custom_js_dialogs_summary">Gamitin ang custom na dialog ng Clint Browser para sa alert(), confirm(), at prompt() sa halip na ang default ng WebView.</string>
     <string name="js_dialog_title">Mensahe mula sa %1$s</string>
     <string name="js_before_unload_title">Umalis sa site?</string>
     <string name="js_before_unload_message">Maaaring hindi ma-save ang mga pagbabagong ginawa mo.</string>
@@ -92,9 +92,9 @@
     <string name="ssl_error_date_invalid">Hindi valid ang mga petsa ng certificate.</string>
     <string name="ssl_error_invalid">Hindi valid ang certificate.</string>
     <string name="custom_http_auth_title">Custom Login Dialogs</string>
-    <string name="custom_http_auth_summary">Gamitin ang sign-in dialog ng Clint kapag humihingi ang isang website ng username at password. Kapag naka-off, hindi magbubukas ang mga site na iyon.</string>
+    <string name="custom_http_auth_summary">Gamitin ang sign-in dialog ng Clint Browser kapag humihingi ang isang website ng username at password. Kapag naka-off, hindi magbubukas ang mga site na iyon.</string>
     <string name="custom_ssl_warnings_title">Custom Security Warnings</string>
-    <string name="custom_ssl_warnings_summary">Ipakita ang babala ng Clint kapag may problema sa security certificate ng isang website, na may opsyong magpatuloy. Kapag naka-off, iba-block ang mga site na iyon.</string>
+    <string name="custom_ssl_warnings_summary">Ipakita ang babala ng Clint Browser kapag may problema sa security certificate ng isang website, na may opsyong magpatuloy. Kapag naka-off, iba-block ang mga site na iyon.</string>
     <string name="date_time_picker_select_date">Pumili ng petsa</string>
     <string name="date_time_picker_select_time">Pumili ng oras</string>
     <string name="date_time_picker_select_month">Pumili ng buwan</string>
@@ -107,9 +107,9 @@
     <string name="date_time_picker_previous_year">Nakaraang taon</string>
     <string name="date_time_picker_next_year">Susunod na taon</string>
     <string name="custom_date_time_pickers_title">Custom Date &amp; Time Pickers</string>
-    <string name="custom_date_time_pickers_summary">Gamitin ang mga custom picker ng Clint para sa mga field ng petsa, oras, buwan, at linggo sa halip na ang default ng WebView.</string>
+    <string name="custom_date_time_pickers_summary">Gamitin ang mga custom picker ng Clint Browser para sa mga field ng petsa, oras, buwan, at linggo sa halip na ang default ng WebView.</string>
     <string name="custom_color_picker_title">Custom Color Picker</string>
-    <string name="custom_color_picker_summary">Gamitin ang custom color picker ng Clint para sa mga field ng kulay sa halip na ang default ng WebView.</string>
+    <string name="custom_color_picker_summary">Gamitin ang custom color picker ng Clint Browser para sa mga field ng kulay sa halip na ang default ng WebView.</string>
     <string name="color_picker_select_color">Pumili ng kulay</string>
     <string name="color_picker_brightness">Liwanag</string>
     <string name="color_picker_hex_label">Hex code</string>
@@ -150,7 +150,7 @@
     <string name="suggestions_api_custom_desc">Magdagdag ng sarili mong suggestions API</string>
     <string name="suggestions_api_off">Naka-off</string>
     <string name="suggestions_api_off_desc">Walang suggestion mula sa web</string>
-    <string name="suggestions_google_warning_message">Makikita ng Google ang bawat letrang tina-type mo habang naghahanap, at maiuugnay ito sa account o IP address mo. Hindi ito kayang pigilan ng Clint.\n\nPara mas protektado ang privacy mo, manatili na lang sa DuckDuckGo.</string>
+    <string name="suggestions_google_warning_message">Makikita ng Google ang bawat letrang tina-type mo habang naghahanap, at maiuugnay ito sa account o IP address mo. Hindi ito kayang pigilan ng Clint Browser.\n\nPara mas protektado ang privacy mo, manatili na lang sa DuckDuckGo.</string>
     <string name="custom_search_suggestions_api_dialog_title">Custom na Search Suggestions API</string>
     <string name="custom_search_suggestions_api_name_hint">Pangalan</string>
     <string name="custom_search_suggestions_api_name_required">Kailangan ng pangalan</string>
@@ -162,12 +162,12 @@
     <string name="default_label">Default</string>
     <string name="next">Susunod \u2192</string>
     <string name="get_started">Magsimula</string>
-    <string name="setup_subtitle">Ang Browser na Gumagawa ng Higit Pa.</string>
+    <string name="setup_subtitle">Magaan na browser na may ADM, ad blocking, media capture, at suporta sa maraming profile</string>
     <string name="js_warning_title">I-disable ang JavaScript?</string>
     <string name="js_warning_message">Maraming feature ng app ang umaasa sa JavaScript, gaya ng web notifications, desktop mode, at reader mode. Puwede ring masira o hindi maayos na lumabas ang mga website.\n\nSigurado ka bang gusto mong i-off ito?</string>
     <string name="action_turn_off_anyway">I-off pa rin</string>
     <string name="google_warning_title">Paalala sa privacy</string>
-    <string name="google_warning_message">Kokolektahin ng Google ang search data mo at iuugnay ito sa account o IP address mo. Hindi ito kayang pigilan ng Clint.\n\nPara mas protektado ang privacy mo, subukan na lang ang DuckDuckGo o Brave.</string>
+    <string name="google_warning_message">Kokolektahin ng Google ang search data mo at iuugnay ito sa account o IP address mo. Hindi ito kayang pigilan ng Clint Browser.\n\nPara mas protektado ang privacy mo, subukan na lang ang DuckDuckGo o Brave.</string>
     <string name="use_google_anyway">Gamitin pa rin ang Google</string>
     <string name="choose_another">Pumili ng iba</string>
     <string name="new_tab">Bagong Tab</string>
@@ -184,7 +184,7 @@
     <string name="about_section_license">LISENSYA</string>
     <string name="about_section_repository">SOURCE CODE</string>
     <string name="about_created_by">Ginawa ni</string>
-    <string name="about_description">Open source na Android browser ang Clint na walang sariling backend, pero punong-puno ng features na katulad ng mga karaniwang browser \\u2014 kasabay ng modernong UI na nakabase sa Material 3.\n\nIginagalang namin ang iyong privacy kaya walang anumang data na kinokolekta ang app. Wala man lang kaming binibilang na active users. Talagang zero data ang kinokolekta namin.\n\nLayunin ng Clint na gumawa ng Android browser na mas marami ang kayang gawin, maganda pang tingnan, at lubos na customizable \\u2014 walang ads, walang paywall. Ganap na libre ang Clint.</string>
+    <string name="about_description">Open source na Android browser ang Clint Browser na walang sariling backend, pero punong-puno ng features na katulad ng mga karaniwang browser \\u2014 kasabay ng modernong UI na nakabase sa Material 3.\n\nIginagalang namin ang iyong privacy kaya walang anumang data na kinokolekta ang app. Wala man lang kaming binibilang na active users. Talagang zero data ang kinokolekta namin.\n\nLayunin ng Clint Browser na gumawa ng Android browser na mas marami ang kayang gawin, maganda pang tingnan, at lubos na customizable \\u2014 walang ads, walang paywall. Ganap na libre ang Clint Browser.</string>
     <string name="about_version_info">Bersyon: %1$s (build %2$d)\nDevice architecture: %3$s</string>
     <string name="about_license_text">Ang source code ng proyektong ito ay lisensyado sa ilalim ng GNU General Public License v3.0 (GPLv3).\n\nAng mga pangalang \"Clint\" at \"Clint Browser,\" ang logo, mga screenshot, at lahat ng kaugnay na branding asset ay mga trademark o proprietary asset ng may-akda at hindi sakop ng GPL license. Kailangan ng malinaw na pahintulot mula sa may-akda para magamit ang mga asset na ito.</string>
     <string name="about_license_link_label">Tingnan ang GPL v3.0 license \u2197</string>
@@ -193,11 +193,11 @@
     <string name="about_section_keep_android_open">KEEP ANDROID OPEN</string>
     <string name="about_keep_android_open_text">Ipinapatupad ng Google ang sapilitang pag-verify ng pagkakakilanlan ng mga developer, na banta sa sideloading at sa malayang app ecosystem ng Android, pati na sa mga app na tulad nito. Alamin ang higit pa at iparinig ang boses mo.</string>
     <string name="about_keep_android_open_url">keepandroidopen.org \u2197</string>
-    <string name="support_clint_title">Suportahan ang Clint</string>
-    <string name="support_clint_summary">Tulungang manatiling libre ang Clint habambuhay. Pag-isipang mag-donate sa developer ng Clint.</string>
+    <string name="support_clint_title">Suportahan ang Clint Browser</string>
+    <string name="support_clint_summary">Tulungang manatiling libre ang Clint Browser habambuhay. Pag-isipang mag-donate sa developer ng Clint Browser.</string>
     <string name="support_clint_view_supporters_title">Tingnan ang mga Kasalukuyang Supporter</string>
-    <string name="support_clint_view_supporters_summary">Tingnan ang lahat ng sumusuporta sa development ng Clint</string>
-    <string name="support_clint_markdown">## Mga Donasyon\n\nAyaw kong magtrabaho para sa isang korporasyon. Gusto kong ipagpatuloy ang mahal kong ginagawa: ang paggawa ng mga app tulad ng Clint at ang pagbabahagi nito nang libre sa lahat.\n\nKung gusto ko, puwede kong gawing freemium ang Clint at ilagay sa likod ng paywall ang ilang feature. Pero pinili kong huwag, dahil hindi ganoong developer ang gusto kong maging.\n\nKung gusto mo ang Clint at gusto mong suportahan ang development nito, pag-isipang mag-donate. Malaki man o maliit, malaking tulong ang bawat kontribusyon para maipagpatuloy ko ang pag-develop at pagpapabuti ng Clint habang nag-aaral pa ako sa kolehiyo.\n\nKung gusto mo, puwede ka ring ma-shoutout bilang supporter.\n\nSalamat sa pagtulong na manatiling libre at independent ang Clint.\n\n[![Patreon](https://img.shields.io/badge/Support%20me-Patreon-orange?style=for-the-badge&amp;logo=patreon)](https://patreon.com/Jhaiian)\n[![Ko-fi](https://img.shields.io/badge/Buy%20me%20a%20coffee-Ko--fi-red?style=for-the-badge&amp;logo=ko-fi)](https://ko-fi.com/jhaiian)\n[![PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&amp;logo=paypal)](https://paypal.me/jhaiian)\n[![InstaPay QR](https://img.shields.io/badge/InstaPay%20QR-Philippines%20only-7C3AED?style=for-the-badge)](https://github.com/jhaiian/jhaiian/blob/main/docs/Insta%20Pay.jpg)</string>
+    <string name="support_clint_view_supporters_summary">Tingnan ang lahat ng sumusuporta sa development ng Clint Browser</string>
+    <string name="support_clint_markdown">## Tulungan Mong Manatiling Libre ang Clint Magpakailanman 💜\n\nAng Clint ay isang independent at open-source na proyekto na ginawa ng nag-iisang developer na naniniwalang karapat-dapat ang lahat sa customizable na karanasan sa pagba-browse nang walang ads, paywall, o naka-lock na features.\n\nAng mga donasyon mo ay nakakatulong sa patuloy na development, maintenance, at mga pagpapabuti sa hinaharap. Malaking bagay ang bawat ambag, gaano man kaliit, at nakakatulong itong panatilihing sumusulong ang Clint.\n\nPalaging libre ang Clint. Salamat sa pagiging bahagi ng paglalakbay na ito. 💜\n\n[![Patreon](https://img.shields.io/badge/Support%20me-Patreon-orange?style=for-the-badge&amp;logo=patreon)](https://patreon.com/Jhaiian)\n[![Ko-fi](https://img.shields.io/badge/Buy%20me%20a%20coffee-Ko--fi-red?style=for-the-badge&amp;logo=ko-fi)](https://ko-fi.com/jhaiian)\n[![PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&amp;logo=paypal)](https://paypal.me/jhaiian)\n[![InstaPay QR](https://img.shields.io/badge/InstaPay%20QR-Philippines%20only-7C3AED?style=for-the-badge)](https://github.com/jhaiian/jhaiian/blob/main/docs/Insta%20Pay.jpg)</string>
     <string name="default_browser_title">Default na Browser</string>
     <string name="default_browser_none">Wala</string>
     <string name="look_and_feel">Hitsura</string>
@@ -347,7 +347,7 @@
     <string name="crash_copy">Kopyahin ang crash report</string>
     <string name="crash_delete">Burahin ang report</string>
     <string name="crash_report_title">MAGSUMITE NG BUG REPORT</string>
-    <string name="crash_report_instructions">Tulungang pagandahin ang Clint sa pag-report ng mga bug sa GitHub. Walang data na awtomatikong ipinapadala \u2014 ikaw ang pipili kung ano ang ibabahagi.</string>
+    <string name="crash_report_instructions">Tulungang pagandahin ang Clint Browser sa pag-report ng mga bug sa GitHub. Walang data na awtomatikong ipinapadala \u2014 ikaw ang pipili kung ano ang ibabahagi.</string>
     <string name="crash_steps_title">Paano magsumite ng report</string>
     <string name="crash_step_reproduce">I-reproduce ang crash o bug</string>
     <string name="crash_step_expand">Buksan ang crash entry para i-expand ito</string>
@@ -363,7 +363,7 @@
     <string name="about_section_contact">CONTACT</string>
     <string name="about_contact_email">jhaiian@proton.me</string>
     <string name="about_section_contributors">MGA CONTRIBUTOR</string>
-    <string name="about_contributors_text">Tingnan ang kumpletong listahan ng mga taong nag-contribute sa Clint.</string>
+    <string name="about_contributors_text">Tingnan ang kumpletong listahan ng mga taong nag-contribute sa Clint Browser.</string>
     <string name="about_contributors_link">Contributors.md \u2197</string>
     <string name="about_section_libraries">MGA GINAMIT NA LIBRARY</string>
     <string name="about_library_androidx_label">AndroidX by Google</string>
@@ -601,7 +601,7 @@
     <string name="download_storage_permission_message">Kailangan ang access sa storage para i-save ang mga na-download na file sa iyong Downloads folder.</string>
     <string name="voice_search">Voice search</string>
     <string name="voice_search_permission_title">Access sa microphone</string>
-    <string name="voice_search_permission_message">Kailangan ng Clint ng access sa microphone para gamitin ang voice search.</string>
+    <string name="voice_search_permission_message">Kailangan ng Clint Browser ng access sa microphone para gamitin ang voice search.</string>
     <string name="voice_search_not_available">Hindi available ang voice search sa device na ito</string>
 
     <string name="toast_downloading">Dina-download ang %1$s</string>
@@ -611,7 +611,7 @@
     <string name="install_apk_dialog_message">Gusto mo bang i-install ang \"%1$s\"?\n\nMag-install lang ng APK mula sa mga source na pinagkakatiwalaan mo.</string>
     <string name="install_apk_dialog_confirm">I-install</string>
     <string name="install_apk_permission_title">Kailangan ng permission</string>
-    <string name="install_apk_permission_message">Para makapag-install ng APK, kailangan ng Clint ng permission na mag-install ng mga app mula sa hindi kilalang source. Dadalhin ka sa Settings para i-enable ito.</string>
+    <string name="install_apk_permission_message">Para makapag-install ng APK, kailangan ng Clint Browser ng permission na mag-install ng mga app mula sa hindi kilalang source. Dadalhin ka sa Settings para i-enable ito.</string>
 
     <string name="restart_required_title">Kailangan ng restart</string>
     <string name="restart_required_message">Kailangang mag-restart ang app para mailapat ang pagbabagong ito.</string>
@@ -714,9 +714,9 @@
     <string name="download_resumable_no">Puwedeng ituloy: Hindi</string>
 
     <string name="setup_default_browser_title">Default na Browser</string>
-    <string name="setup_default_browser_description">Gawing default browser mo ang Clint para awtomatikong dito magbukas ang mga link mula sa ibang app. Opsyonal lang ito, puwede mo itong baguhin anumang oras sa settings ng iyong device.</string>
+    <string name="setup_default_browser_description">Gawing default browser mo ang Clint Browser para awtomatikong dito magbukas ang mga link mula sa ibang app. Opsyonal lang ito, puwede mo itong baguhin anumang oras sa settings ng iyong device.</string>
     <string name="setup_default_browser_card_title">Itakda bilang Default na Browser</string>
-    <string name="setup_default_browser_card_desc">Pindutin ang button sa ibaba para itakda ang Clint bilang default mong browser</string>
+    <string name="setup_default_browser_card_desc">Pindutin ang button sa ibaba para itakda ang Clint Browser bilang default mong browser</string>
     <string name="setup_default_browser_set_button">Itakda bilang Default na Browser</string>
     <string name="setup_default_browser_skip">Laktawan</string>
 
@@ -879,14 +879,14 @@
     <string name="address_bar_position_split_desc">Address bar sa taas na may mga navigation button sa ibaba</string>
     <string name="setup_status_bar_applied_later">Ilalapat ito pagkatapos ng setup.</string>
 
-    <string name="setup_welcome_title">Welcome sa Clint</string>
+    <string name="setup_welcome_title">Welcome sa Clint Browser</string>
     <string name="setup_welcome_subtitle">Bago tayo magsimula, basahin muna ang aming mga tuntunin.</string>
     <string name="setup_terms_read">Basahin</string>
     <string name="setup_terms_agree">Nabasa ko at sumasang-ayon ako sa Patakaran sa Privacy at Mga Tuntunin ng Serbisyo</string>
     <string name="setup_terms_continue">Sumang-ayon at Magpatuloy</string>
 
     <string name="setup_restore_title">I-restore mula sa Backup</string>
-    <string name="setup_restore_subtitle">May backup ka ba ng Clint? I-restore ito ngayon para maibalik ang mga setting at data mo, o laktawan para mag-set up mula sa simula.</string>
+    <string name="setup_restore_subtitle">May backup ka ba ng Clint Browser? I-restore ito ngayon para maibalik ang mga setting at data mo, o laktawan para mag-set up mula sa simula.</string>
     <string name="setup_restore_card_title">I-restore ang Backup</string>
     <string name="setup_restore_card_desc">Pumili ng .clintbackup file mula sa iyong device</string>
     <string name="setup_restore_button">I-restore ang Backup</string>
@@ -981,7 +981,7 @@
     <string name="exit_confirmation_dialog_desc">Magpapakita ng dialog ng kumpirmasyon bago mag-exit</string>
     <string name="exit_tap_again">Pindutin ulit para mag-exit</string>
     <string name="exit_dialog_title">Mag-exit?</string>
-    <string name="exit_dialog_message">Sigurado ka bang gusto mong mag-exit sa Clint?</string>
+    <string name="exit_dialog_message">Sigurado ka bang gusto mong mag-exit sa Clint Browser?</string>
     <string name="exit_dialog_confirm">Mag-exit</string>
 
     <string name="image_open_in_new_tab">Buksan ang larawan sa bagong tab</string>
@@ -1133,7 +1133,7 @@
     <string name="site_permission_items_deleted">Naalis ang mga exception</string>
 
     <string name="battery_opt_rationale_title">Payagan ang pag-download sa background</string>
-    <string name="battery_opt_rationale_message">Para magpatuloy ang mga download kapag lumipat ka sa ibang app, payagan ang Clint na i-ignore ang battery optimization. Kung hindi, maaaring i-pause o i-cancel ng system ang mga aktibong download habang nasa background ang app.</string>
+    <string name="battery_opt_rationale_message">Para magpatuloy ang mga download kapag lumipat ka sa ibang app, payagan ang Clint Browser na i-ignore ang battery optimization. Kung hindi, maaaring i-pause o i-cancel ng system ang mga aktibong download habang nasa background ang app.</string>
     <string name="download_metered_warning_title">May nakitang metered na network</string>
     <string name="download_metered_warning_message">Naka-enable ang \u201cUnmetered lang\u201d, pero nakakonekta ka sa metered na network. Gusto mo bang gamitin ang metered na network para i-download ang file na ito?</string>
     <string name="action_download_anyway">I-download pa rin</string>
@@ -1467,9 +1467,9 @@
     <string name="restore_action_continue">Magpatuloy</string>
 
     <string name="restore_invalid_title">Hindi Wastong Backup File</string>
-    <string name="restore_invalid_message">Hindi ito wastong Clint backup file, o sira ito.</string>
+    <string name="restore_invalid_message">Hindi ito wastong Clint Browser backup file, o sira ito.</string>
     <string name="restore_unsupported_title">Hindi Suportadong Bersyon ng Backup</string>
-    <string name="restore_unsupported_message">Ginawa ang backup na ito gamit ang mas bagong bersyon ng Clint at hindi ito maibabalik dito.</string>
+    <string name="restore_unsupported_message">Ginawa ang backup na ito gamit ang mas bagong bersyon ng Clint Browser at hindi ito maibabalik dito.</string>
     <string name="restore_generic_error_title">Hindi Mabuksan ang Backup</string>
     <string name="restore_generic_error_message">May naganap na error habang binabasa ang backup file.</string>
 
@@ -1480,7 +1480,7 @@
     <string name="restore_confirm_message">Papalitan ng restore ang kasalukuyan mong data sa mga napiling kategorya. Hindi na ito mababawi.</string>
 
     <string name="restore_result_success_title">Kumpleto na ang Restore</string>
-    <string name="restore_result_success_message">Naibalik na ang data mo. Kailangang mag-restart ng Clint para mailapat ang mga pagbabago.</string>
+    <string name="restore_result_success_message">Naibalik na ang data mo. Kailangang mag-restart ng Clint Browser para mailapat ang mga pagbabago.</string>
     <string name="restore_result_partial_note">Hindi nakita sa backup na ito: %1$s</string>
     <string name="restore_result_error_title">Nabigo ang Restore</string>
     <string name="restore_result_error_message">May naganap na error habang ibinabalik ang iyong data.</string>
@@ -1726,11 +1726,11 @@
     <string name="homepage_image_title">Larawan ng Homepage</string>
     <string name="homepage_image_summary">I-tap para pumili ng ibang larawan</string>
     <string name="homepage_show_favorites_title">Ipakita ang mga paborito</string>
-    <string name="homepage_show_favorites_summary">Ipakita ang iyong mga bookmark sa homepage ng Clint</string>
+    <string name="homepage_show_favorites_summary">Ipakita ang iyong mga bookmark sa homepage ng Clint Browser</string>
     <string name="homepage_show_recent_title">Ipakita ang kamakailang binisita</string>
-    <string name="homepage_show_recent_summary">Ipakita ang mga site na kamakailan mong binisita sa homepage ng Clint</string>
+    <string name="homepage_show_recent_summary">Ipakita ang mga site na kamakailan mong binisita sa homepage ng Clint Browser</string>
     <string name="homepage_center_content_title">I-center ang nilalaman</string>
-    <string name="homepage_center_content_summary">I-center nang patayo ang nilalaman ng homepage ng Clint sa screen</string>
+    <string name="homepage_center_content_summary">I-center nang patayo ang nilalaman ng homepage ng Clint Browser sa screen</string>
     <string name="homepage_image_error">Hindi magamit ang larawang iyon. Subukan ang iba.</string>
     <string name="home_greeting_morning">Magandang umaga</string>
     <string name="home_greeting_afternoon">Magandang hapon</string>

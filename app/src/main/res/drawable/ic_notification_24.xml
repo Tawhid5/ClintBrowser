@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Status bar / notification small icon, derived from the Clint logo
-    (drawable/ic_clint_logo.xml). Per Android notification guidelines, this
-    must be a flat, single-color silhouette on a transparent background —
-    the system only reads the alpha channel and renders it in white (or the
-    theme color) in the status bar and notification shade, so color here is
-    just a safe placeholder. Do not tint or recolor this drawable elsewhere;
-    create a separate icon if this shape is needed in colored app UI.
--->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
@@ -57,5 +48,12 @@
         android:strokeWidth="4.5"
         android:strokeLineJoin="round"
         android:strokeLineCap="round"/>
+
+    <path
+        android:pathData="M80.6,62.0 L68.0,80.9 L75.2,80.9 L71.6,92.6 L84.2,73.7 L77.0,73.7 Z"
+        android:fillColor="@android:color/white"
+        android:strokeColor="@android:color/white"
+        android:strokeWidth="2.5"
+        android:strokeLineJoin="round"/>
 
 </vector>

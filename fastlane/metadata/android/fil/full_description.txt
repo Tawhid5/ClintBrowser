@@ -1,4 +1,4 @@
-Ang Clint ay isang open source na browser para sa Android na may modernong Material 3 na disenyo at napakaraming feature. Walang sariling backend, walang kinokolektang data, at walang ads o bayad na bahagi. Libre ito nang buo.
+Ang Clint Browser ay isang open source na browser para sa Android na may modernong Material 3 na disenyo at napakaraming feature. Walang sariling backend, walang kinokolektang data, at walang ads o bayad na bahagi. Libre ito nang buo.
 
 <b>MEDIA CAPTURE</b>
 • Nakikita ang video, audio, at subtitle stream sa mga pahinang binibisita mo
@@ -48,7 +48,7 @@ Ang Clint ay isang open source na browser para sa Android na may modernong Mater
 <b>PAGPAPASADYA</b>
 • 50 accent color, Light at Dark theme, at 5 antas ng surface intensity
 • 500 posibleng kombinasyon ng theme
-• Pumili sa pagitan ng homepage ng Clint at ng homepage ng search engine mo
+• Pumili sa pagitan ng homepage ng Clint Browser at ng homepage ng search engine mo
 • Plain color, gradient, o sarili mong larawan bilang background ng homepage
 
 <b>MGA PROFILE</b>

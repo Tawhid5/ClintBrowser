@@ -165,6 +165,7 @@ internal fun MainScreen(activity: MainActivity, state: MainUiState) {
                 ),
                 suggestions = state.suggestions,
                 statusBarPaddingPx = effectiveStatusBarPx,
+                navBarPaddingPx = effectiveNavBarPx,
                 onQueryChange = { activity.onSearchQueryChanged(it) },
                 onSubmit = { activity.onSearchSubmitted(it) },
                 onVoiceSearch = { activity.handleVoiceSearchTap() },

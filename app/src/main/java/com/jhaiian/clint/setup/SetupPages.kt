@@ -95,7 +95,8 @@ fun SetupWelcomePage(
             color = colors.onSurface,
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(top = 24.dp)
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+            modifier = Modifier.fillMaxWidth().padding(top = 24.dp)
         )
         Text(
             stringResource(R.string.setup_welcome_subtitle),
@@ -103,7 +104,7 @@ fun SetupWelcomePage(
             fontSize = 14.sp,
             lineHeight = 19.6.sp,
             textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-            modifier = Modifier.padding(top = 8.dp, bottom = 32.dp)
+            modifier = Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 32.dp)
         )
         Card(
             Modifier

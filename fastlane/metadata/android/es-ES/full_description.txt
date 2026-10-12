@@ -1,4 +1,4 @@
-Clint es un navegador de código abierto para Android con una interfaz moderna en Material 3 y un montón de funciones. No tiene servidor propio, no recopila ningún dato y no incluye anuncios ni muros de pago. Es totalmente gratis.
+Clint Browser es un navegador de código abierto para Android con una interfaz moderna en Material 3 y un montón de funciones. No tiene servidor propio, no recopila ningún dato y no incluye anuncios ni muros de pago. Es totalmente gratis.
 
 <b>CAPTURA DE MEDIOS</b>
 • Detecta flujos de vídeo, audio y subtítulos en las páginas que visitas
@@ -48,7 +48,7 @@ Clint es un navegador de código abierto para Android con una interfaz moderna e
 <b>PERSONALIZACIÓN</b>
 • 50 colores de acento, temas claro y oscuro y 5 intensidades de superficie
 • 500 combinaciones de tema posibles
-• Elige entre la página de inicio de Clint y la de tu buscador
+• Elige entre la página de inicio de Clint Browser y la de tu buscador
 • Fondo de inicio de color liso, degradado o con tu propia imagen
 
 <b>PERFILES</b>

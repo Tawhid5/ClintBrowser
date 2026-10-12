@@ -69,6 +69,7 @@ internal object DownloadNotificationHelper {
     }
 
     fun showQueuedNotification(context: Context, item: DownloadItem) {
+        if (ClintDownloadManager.isRemoved(item.id)) return
         val nm = context.getSystemService(NotificationManager::class.java)
         NotificationCompat.Builder(context, ClintDownloadManager.CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification_24)
@@ -85,6 +86,7 @@ internal object DownloadNotificationHelper {
     }
 
     fun showProgressNotification(context: Context, item: DownloadItem) {
+        if (ClintDownloadManager.isRemoved(item.id)) return
         val nm = context.getSystemService(NotificationManager::class.java)
 
         val statusText: String
@@ -197,6 +199,7 @@ internal object DownloadNotificationHelper {
     }
 
     fun showAllocationNotification(context: Context, item: DownloadItem) {
+        if (ClintDownloadManager.isRemoved(item.id)) return
         val nm = context.getSystemService(NotificationManager::class.java)
         val pct = item.allocationProgress
         val allocStr = context.getString(R.string.download_status_allocating, pct)
@@ -218,6 +221,7 @@ internal object DownloadNotificationHelper {
     }
 
     fun showCopyingTempNotification(context: Context, item: DownloadItem) {
+        if (ClintDownloadManager.isRemoved(item.id)) return
         val nm = context.getSystemService(NotificationManager::class.java)
         val progress = item.copyProgress
         NotificationCompat.Builder(context, ClintDownloadManager.CHANNEL_ID)
@@ -234,6 +238,7 @@ internal object DownloadNotificationHelper {
     }
 
     fun showDeletingTempNotification(context: Context, item: DownloadItem) {
+        if (ClintDownloadManager.isRemoved(item.id)) return
         val nm = context.getSystemService(NotificationManager::class.java)
         NotificationCompat.Builder(context, ClintDownloadManager.CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification_24)
@@ -309,6 +314,7 @@ internal object DownloadNotificationHelper {
         actionLabel: String,
         actionPendingIntent: PendingIntent
     ) {
+        if (ClintDownloadManager.isRemoved(item.id)) return
         val nm = context.getSystemService(NotificationManager::class.java)
         val pct = item.progressPercent
         val progressText = buildPausedProgressText(context, item)

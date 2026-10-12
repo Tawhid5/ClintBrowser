@@ -4,6 +4,37 @@ All notable changes to Clint Browser are documented here.
 
 ---
 
+# v1.2.0-r2
+
+---
+
+## Announcement
+
+[**Clint Gecko**](https://github.com/jhaiian/ClintGecko) is now available! Clint Gecko is a Firefox version of Clint Browser. It's meant to have extension support and background playback, and ADM and Media Capture are also there. Like every Clint experience is there, and more things will be added there, the features that wouldn't be possible with WebView limitations.
+
+Don't worry. Clint Browser (this application) will still get updates, it's just not as frequent as before because I'm managing two things now. Like every feature Clint Gecko gets that can be implemented on WebView, I will be adding it here. Don't worry, I will not abandon this.
+
+---
+
+## What's New
+
+> There's nothing much new here because I spent my time migrating Clint Browser to Clint Gecko to create a separate app.
+
+### New Icon
+
+Since Clint has two variants now, I want to make changes on the icon so the two will look different. Clint Browser now will have a lightning symbol, symbolizing it's lite compared to the Gecko version.
+
+Also, the name of the application launcher was changed from **Clint** to **Clint Browser**.
+
+---
+
+## Bug Fixes
+
+- Fixed normal downloads still continuing. Now every request will get canceled immediately after you delete them.
+- Fixed on lower Android versions the system navigation covering the bottom address bar. (Thanks to @HatoGreyrat for reporting this bug #73)
+
+---
+
 # v1.2.0
 
 ---

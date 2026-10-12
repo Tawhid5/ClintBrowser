@@ -1,4 +1,4 @@
-Clint is an open source Android browser with a modern Material 3 interface and tons of features. It has no backend, collects zero data, and has no ads or paywalls. Completely free.
+Clint Browser is an open source Android browser with a modern Material 3 interface and tons of features. It has no backend, collects zero data, and has no ads or paywalls. Completely free.
 
 <b>MEDIA CAPTURE</b>
 • Detects video, audio and subtitle streams on the pages you visit
@@ -48,7 +48,7 @@ Clint is an open source Android browser with a modern Material 3 interface and t
 <b>CUSTOMIZATION</b>
 • 50 accent colors, Light and Dark themes and 5 surface intensities
 • 500 possible theme combinations
-• Choose between the Clint homepage and your search engine homepage
+• Choose between the Clint Browser homepage and your search engine homepage
 • Plain color, gradient or custom image homepage backgrounds
 
 <b>PROFILES</b>

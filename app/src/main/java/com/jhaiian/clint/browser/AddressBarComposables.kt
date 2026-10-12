@@ -33,7 +33,8 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -297,6 +298,7 @@ internal fun SearchOverlay(
     hint: String,
     suggestions: List<SuggestionItem>,
     statusBarPaddingPx: Int,
+    navBarPaddingPx: Int = 0,
     onQueryChange: (String) -> Unit,
     onSubmit: (String) -> Unit,
     onVoiceSearch: () -> Unit,
@@ -424,8 +426,14 @@ internal fun SearchOverlay(
         }
     }
 
-    Surface(color = colors.background, modifier = modifier.fillMaxSize().imePadding()) {
-        Column(modifier = Modifier.fillMaxSize().padding(top = with(density) { statusBarPaddingPx.toDp() })) {
+    val bottomInsetPx = maxOf(WindowInsets.ime.getBottom(density), navBarPaddingPx)
+    Surface(color = colors.background, modifier = modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier.fillMaxSize().padding(
+                top = with(density) { statusBarPaddingPx.toDp() },
+                bottom = with(density) { bottomInsetPx.toDp() }
+            )
+        ) {
             if (isBottom) {
                 Box(modifier = Modifier.weight(1f, fill = true), contentAlignment = Alignment.BottomStart) { suggestionsList() }
                 fieldRow()
