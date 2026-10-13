@@ -17,6 +17,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
@@ -65,6 +66,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.input.pointer.pointerInput
@@ -297,9 +299,12 @@ private fun AllInOneVideoPlayer(
     val speeds = remember { listOf(0.5f, 0.75f, 1.0f, 1.25f, 1.5f, 2.0f) }
     var speedIndex by remember { mutableIntStateOf(2) }
 
-    // Audio Tracks
+    // Audio & Subtitles
     var showAudioDialog by remember { mutableStateOf(false) }
+    var showSubDialog by remember { mutableStateOf(false) }
     var audioTracks by remember { mutableStateOf<List<TrackItem>>(emptyList()) }
+    var subTracks by remember { mutableStateOf<List<TrackItem>>(emptyList()) }
+    var isSubEnabled by remember { mutableStateOf(false) }
 
     val audioManager = remember { context.getSystemService(Context.AUDIO_SERVICE) as AudioManager }
     val maxVolume = remember { audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC).coerceAtLeast(1) }
@@ -308,7 +313,6 @@ private fun AllInOneVideoPlayer(
         hudText = message
     }
 
-    // Auto-hide HUD after 1.5s
     LaunchedEffect(hudText) {
         if (hudText != null) {
             delay(1500)
@@ -329,7 +333,7 @@ private fun AllInOneVideoPlayer(
         }
     }
 
-    // Auto-hide Unlock button after 3s when locked
+    // Auto-hide Unlock button after 3s
     LaunchedEffect(lockButtonVisible) {
         if (lockButtonVisible) {
             delay(3000)
@@ -337,16 +341,21 @@ private fun AllInOneVideoPlayer(
         }
     }
 
+    // ExoPlayer Builder with Subtitles DISABLED by default
     val player = remember(media.id) {
         val dataSourceFactory = createMediaPreviewDataSourceFactory(context, media)
         ExoPlayer.Builder(context).build().apply {
             setMediaSource(buildMediaPreviewSource(media, dataSourceFactory))
+            // Auto subtitle OFF by default:
+            trackSelectionParameters = trackSelectionParameters
+                .buildUpon()
+                .setTrackTypeDisabled(C.TRACK_TYPE_TEXT, true)
+                .build()
             prepare()
             playWhenReady = true
         }
     }
 
-    // Timeline updater loop
     LaunchedEffect(player) {
         while (true) {
             if (!isScrubbing) {
@@ -407,11 +416,13 @@ private fun AllInOneVideoPlayer(
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
-    // Audio track discovery
-    fun refreshAudioTracks() {
+    fun refreshTracks() {
         val currentTracks = player.currentTracks
         val audios = mutableListOf<TrackItem>()
+        val subs = mutableListOf<TrackItem>()
         var aIdx = 0
+        var sIdx = 0
+
         for (group in currentTracks.groups) {
             if (group.type == C.TRACK_TYPE_AUDIO) {
                 for (i in 0 until group.length) {
@@ -420,13 +431,22 @@ private fun AllInOneVideoPlayer(
                     audios.add(TrackItem(aIdx, label, group.isTrackSelected(i)))
                     aIdx++
                 }
+            } else if (group.type == C.TRACK_TYPE_TEXT) {
+                for (i in 0 until group.length) {
+                    val format = group.getTrackFormat(i)
+                    val label = format.label ?: format.language?.uppercase() ?: "Subtitle ${sIdx + 1}"
+                    subs.add(TrackItem(sIdx, label, group.isTrackSelected(i)))
+                    sIdx++
+                }
             }
         }
         audioTracks = audios
+        subTracks = subs
+        isSubEnabled = subs.any { it.isSelected } && !player.trackSelectionParameters.disabledTrackTypes.contains(C.TRACK_TYPE_TEXT)
     }
 
     Box(Modifier.fillMaxSize().background(Color.Black)) {
-        // Player View
+        // Player Surface
         AndroidView(
             factory = {
                 PlayerView(it).apply {
@@ -442,9 +462,11 @@ private fun AllInOneVideoPlayer(
             modifier = Modifier.fillMaxSize()
         )
 
-        // Gesture Detection Overlay with Long-Press 2.0x Fast Forward
+        // Gesture Overlay (with Double-Tap Seek and Long-Press 2x)
         var pendingSeekTarget by remember { mutableLongStateOf(-1L) }
         var isFastForwarding by remember { mutableStateOf(false) }
+        var lastTapTime by remember { mutableLongStateOf(0L) }
+        var lastTapX by remember { mutableFloatStateOf(0f) }
 
         Box(
             modifier = Modifier
@@ -470,7 +492,7 @@ private fun AllInOneVideoPlayer(
                             val event = awaitPointerEvent()
                             val change = event.changes.firstOrNull { it.id == down.id } ?: break
 
-                            // Long-press detection (after 450ms of holding without drag)
+                            // Long press for 2x speed
                             if (!isLocked && !isDragging && !isFastForwarding && (System.currentTimeMillis() - downTime > 450L)) {
                                 isFastForwarding = true
                                 player.playbackParameters = PlaybackParameters(2.0f)
@@ -478,7 +500,6 @@ private fun AllInOneVideoPlayer(
                             }
 
                             if (!change.pressed) {
-                                // Released pointer
                                 if (isFastForwarding) {
                                     isFastForwarding = false
                                     player.playbackParameters = PlaybackParameters(speeds[speedIndex])
@@ -490,12 +511,32 @@ private fun AllInOneVideoPlayer(
                                         pendingSeekTarget = -1L
                                     }
                                 } else {
-                                    // Single Tap
-                                    if (isLocked) {
-                                        lockButtonVisible = !lockButtonVisible
+                                    // Taps: Check double-tap vs single-tap
+                                    val now = System.currentTimeMillis()
+                                    if (!isLocked && (now - lastTapTime < 320L) && abs(startX - lastTapX) < 160f) {
+                                        // Double Tap Seek!
+                                        if (startX < size.width / 2f) {
+                                            val newPos = (player.currentPosition - 10_000L).coerceAtLeast(0L)
+                                            player.seekTo(newPos)
+                                            currentPosition = newPos
+                                            showHud("<< 10s")
+                                        } else {
+                                            val dur = player.duration.coerceAtLeast(0L)
+                                            val newPos = (player.currentPosition + 10_000L).coerceAtMost(dur)
+                                            player.seekTo(newPos)
+                                            currentPosition = newPos
+                                            showHud("10s >>")
+                                        }
+                                        lastTapTime = 0L
                                     } else {
-                                        controlsVisible = !controlsVisible
-                                        resetControlsTimeout()
+                                        lastTapTime = now
+                                        lastTapX = startX
+                                        if (isLocked) {
+                                            lockButtonVisible = !lockButtonVisible
+                                        } else {
+                                            controlsVisible = !controlsVisible
+                                            resetControlsTimeout()
+                                        }
                                     }
                                 }
                                 break
@@ -509,13 +550,7 @@ private fun AllInOneVideoPlayer(
                                     if (abs(deltaX) > touchSlop || abs(deltaY) > touchSlop) {
                                         isDragging = true
                                         change.consume()
-                                        dragMode = if (abs(deltaX) > abs(deltaY)) {
-                                            1 // Seek
-                                        } else if (startX < size.width / 2f) {
-                                            2 // Brightness (Left)
-                                        } else {
-                                            3 // Volume (Right)
-                                        }
+                                        dragMode = if (abs(deltaX) > abs(deltaY)) 1 else if (startX < size.width / 2f) 2 else 3
                                     }
                                 } else {
                                     change.consume()
@@ -575,7 +610,7 @@ private fun AllInOneVideoPlayer(
             )
         }
 
-        // Center HUD Toast
+        // Center HUD Feedback Toast
         AnimatedVisibility(
             visible = hudText != null,
             enter = fadeIn(),
@@ -585,9 +620,10 @@ private fun AllInOneVideoPlayer(
             hudText?.let { text ->
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(Color.Black.copy(alpha = 0.8f))
-                        .padding(horizontal = 18.dp, vertical = 10.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(Color.Black.copy(alpha = 0.82f))
+                        .border(1.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(12.dp))
+                        .padding(horizontal = 20.dp, vertical = 12.dp)
                 ) {
                     Text(
                         text = text,
@@ -608,19 +644,20 @@ private fun AllInOneVideoPlayer(
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(36.dp)
+                horizontalArrangement = Arrangement.spacedBy(38.dp)
             ) {
                 // -10s
                 Box(
                     modifier = Modifier
-                        .size(46.dp)
+                        .size(48.dp)
                         .clip(CircleShape)
-                        .background(Color.Black.copy(alpha = 0.6f))
+                        .background(Color.Black.copy(alpha = 0.55f))
+                        .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                         .clickable {
                             val newPos = (player.currentPosition - 10_000L).coerceAtLeast(0L)
                             player.seekTo(newPos)
                             currentPosition = newPos
-                            showHud("-10s")
+                            showHud("<< 10s")
                             resetControlsTimeout()
                         },
                     contentAlignment = Alignment.Center
@@ -628,10 +665,10 @@ private fun AllInOneVideoPlayer(
                     Text("-10s", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold)
                 }
 
-                // Play / Pause
+                // Play / Pause Button with Glow & Accent
                 Box(
                     modifier = Modifier
-                        .size(62.dp)
+                        .size(64.dp)
                         .clip(CircleShape)
                         .background(clintColors.primary)
                         .clickable {
@@ -650,15 +687,16 @@ private fun AllInOneVideoPlayer(
                 // +10s
                 Box(
                     modifier = Modifier
-                        .size(46.dp)
+                        .size(48.dp)
                         .clip(CircleShape)
-                        .background(Color.Black.copy(alpha = 0.6f))
+                        .background(Color.Black.copy(alpha = 0.55f))
+                        .border(1.dp, Color.White.copy(alpha = 0.2f), CircleShape)
                         .clickable {
                             val dur = player.duration.coerceAtLeast(0L)
                             val newPos = (player.currentPosition + 10_000L).coerceAtMost(dur)
                             player.seekTo(newPos)
                             currentPosition = newPos
-                            showHud("+10s")
+                            showHud("10s >>")
                             resetControlsTimeout()
                         },
                     contentAlignment = Alignment.Center
@@ -668,126 +706,152 @@ private fun AllInOneVideoPlayer(
             }
         }
 
-        // Top Control Bar (with Clock, Audio, Resize, Speed, Rotate, Lock)
+        // Top Gradient Bar (with Clock, Audio, CC, Resize, Speed, Rotate, Lock)
         AnimatedVisibility(
             visible = controlsVisible && !isLocked,
             enter = fadeIn(),
             exit = fadeOut(),
             modifier = Modifier.align(Alignment.TopCenter)
         ) {
-            Row(
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.Black.copy(alpha = 0.45f))
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(Color.Black.copy(alpha = 0.75f), Color.Transparent)
+                        )
+                    )
                     .windowInsetsPadding(WindowInsets.systemBars)
                     .displayCutoutPadding()
-                    .padding(horizontal = 10.dp, vertical = 6.dp),
-                verticalAlignment = Alignment.CenterVertically
+                    .padding(horizontal = 12.dp, vertical = 8.dp)
             ) {
-                IconButton(
-                    onClick = onClose,
-                    modifier = Modifier.size(36.dp)
-                ) {
-                    Icon(
-                        Icons.Filled.Close,
-                        contentDescription = stringResource(R.string.action_close),
-                        tint = Color.White
-                    )
-                }
-
-                if (currentTimeString.isNotEmpty()) {
-                    Text(
-                        text = currentTimeString,
-                        color = Color.White.copy(alpha = 0.85f),
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Medium,
-                        modifier = Modifier.padding(start = 6.dp)
-                    )
-                }
-
-                Spacer(Modifier.weight(1f))
-
                 Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Audio Track Switcher
-                    PlayerChip(label = "AUDIO") {
-                        refreshAudioTracks()
-                        if (audioTracks.isNotEmpty()) showAudioDialog = true
-                        else showHud("Single Audio Track")
-                        resetControlsTimeout()
+                    IconButton(
+                        onClick = onClose,
+                        modifier = Modifier.size(36.dp)
+                    ) {
+                        Icon(
+                            Icons.Filled.Close,
+                            contentDescription = stringResource(R.string.action_close),
+                            tint = Color.White
+                        )
                     }
 
-                    // Resize Mode
-                    PlayerChip(label = resizeModes[resizeIndex].second) {
-                        resizeIndex = (resizeIndex + 1) % resizeModes.size
-                        showHud("Resize: ${resizeModes[resizeIndex].second}")
-                        resetControlsTimeout()
+                    if (currentTimeString.isNotEmpty()) {
+                        Text(
+                            text = currentTimeString,
+                            color = Color.White.copy(alpha = 0.85f),
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.padding(start = 8.dp)
+                        )
                     }
 
-                    // Speed
-                    PlayerChip(label = "${speeds[speedIndex]}x") {
-                        speedIndex = (speedIndex + 1) % speeds.size
-                        val newSpeed = speeds[speedIndex]
-                        player.playbackParameters = PlaybackParameters(newSpeed)
-                        showHud("Speed: ${newSpeed}x")
-                        resetControlsTimeout()
-                    }
+                    Spacer(Modifier.weight(1f))
 
-                    // Screen Rotate
-                    PlayerChip(label = "ROTATE") {
-                        activity?.let { act ->
-                            val isLandscape = act.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-                            act.requestedOrientation = if (isLandscape) {
-                                ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
-                            } else {
-                                ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-                            }
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        // Audio Selector
+                        ModernPlayerPill(label = "AUDIO") {
+                            refreshTracks()
+                            if (audioTracks.isNotEmpty()) showAudioDialog = true
+                            else showHud("Single Audio Track")
+                            resetControlsTimeout()
                         }
-                        resetControlsTimeout()
-                    }
 
-                    // Lock Button
-                    PlayerChip(label = "LOCK") {
-                        isLocked = true
-                        controlsVisible = false
-                        lockButtonVisible = true
-                        showHud("Controls Locked")
+                        // Subtitle (CC) Selector
+                        ModernPlayerPill(
+                            label = if (isSubEnabled) "CC (ON)" else "CC",
+                            isActive = isSubEnabled,
+                            activeColor = clintColors.primary
+                        ) {
+                            refreshTracks()
+                            if (subTracks.isNotEmpty()) showSubDialog = true
+                            else showHud("No Subtitles Detected")
+                            resetControlsTimeout()
+                        }
+
+                        // Resize
+                        ModernPlayerPill(label = resizeModes[resizeIndex].second) {
+                            resizeIndex = (resizeIndex + 1) % resizeModes.size
+                            showHud("Resize: ${resizeModes[resizeIndex].second}")
+                            resetControlsTimeout()
+                        }
+
+                        // Speed
+                        ModernPlayerPill(
+                            label = "${speeds[speedIndex]}x",
+                            isActive = speeds[speedIndex] != 1.0f,
+                            activeColor = clintColors.primary
+                        ) {
+                            speedIndex = (speedIndex + 1) % speeds.size
+                            val newSpeed = speeds[speedIndex]
+                            player.playbackParameters = PlaybackParameters(newSpeed)
+                            showHud("Speed: ${newSpeed}x")
+                            resetControlsTimeout()
+                        }
+
+                        // Rotate
+                        ModernPlayerPill(label = "ROTATE") {
+                            activity?.let { act ->
+                                val isLandscape = act.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+                                act.requestedOrientation = if (isLandscape) {
+                                    ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
+                                } else {
+                                    ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+                                }
+                            }
+                            resetControlsTimeout()
+                        }
+
+                        // Lock
+                        ModernPlayerPill(label = "LOCK") {
+                            isLocked = true
+                            controlsVisible = false
+                            lockButtonVisible = true
+                            showHud("Controls Locked")
+                        }
                     }
                 }
             }
         }
 
-        // Bottom Progress Bar & Timeline
+        // Bottom Gradient Bar & Timeline
         AnimatedVisibility(
             visible = controlsVisible && !isLocked,
             enter = fadeIn(),
             exit = fadeOut(),
             modifier = Modifier.align(Alignment.BottomCenter)
         ) {
-            Column(
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.Black.copy(alpha = 0.5f))
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(Color.Transparent, Color.Black.copy(alpha = 0.8f))
+                        )
+                    )
                     .windowInsetsPadding(WindowInsets.systemBars)
-                    .padding(horizontal = 14.dp, vertical = 6.dp)
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Current time
                     Text(
                         text = if (isScrubbing) formatTime((scrubFraction * totalDuration).toLong()) else formatTime(currentPosition),
                         color = Color.White,
                         fontSize = 12.sp,
-                        fontWeight = FontWeight.Medium
+                        fontWeight = FontWeight.SemiBold
                     )
 
                     Spacer(Modifier.width(10.dp))
 
-                    // Progress Slider
                     val sliderVal = if (totalDuration > 0) {
                         if (isScrubbing) scrubFraction else (currentPosition.toFloat() / totalDuration).coerceIn(0f, 1f)
                     } else 0f
@@ -808,25 +872,24 @@ private fun AllInOneVideoPlayer(
                         colors = SliderDefaults.colors(
                             thumbColor = clintColors.primary,
                             activeTrackColor = clintColors.primary,
-                            inactiveTrackColor = Color.White.copy(alpha = 0.3f)
+                            inactiveTrackColor = Color.White.copy(alpha = 0.28f)
                         ),
                         modifier = Modifier.weight(1f)
                     )
 
                     Spacer(Modifier.width(10.dp))
 
-                    // Total duration
                     Text(
                         text = formatTime(totalDuration),
                         color = Color.White.copy(alpha = 0.8f),
                         fontSize = 12.sp,
-                        fontWeight = FontWeight.Medium
+                        fontWeight = FontWeight.SemiBold
                     )
                 }
             }
         }
 
-        // Smart Floating Unlock Button (Auto-hides in 3s)
+        // Auto-hiding Floating Unlock Button
         AnimatedVisibility(
             visible = isLocked && lockButtonVisible,
             enter = fadeIn(),
@@ -837,7 +900,7 @@ private fun AllInOneVideoPlayer(
                 .displayCutoutPadding()
                 .padding(16.dp)
         ) {
-            PlayerChip(label = "UNLOCK") {
+            ModernPlayerPill(label = "UNLOCK") {
                 isLocked = false
                 lockButtonVisible = false
                 controlsVisible = true
@@ -850,13 +913,14 @@ private fun AllInOneVideoPlayer(
         if (showAudioDialog) {
             AlertDialog(
                 onDismissRequest = { showAudioDialog = false },
-                title = { Text("Select Audio Track") },
+                title = { Text("Select Audio Track", fontWeight = FontWeight.Bold) },
                 text = {
                     LazyColumn {
                         itemsIndexed(audioTracks) { idx, item ->
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
+                                    .clip(RoundedCornerShape(8.dp))
                                     .clickable {
                                         var count = 0
                                         val current = player.currentTracks
@@ -877,7 +941,7 @@ private fun AllInOneVideoPlayer(
                                             }
                                         }
                                     }
-                                    .padding(vertical = 10.dp),
+                                    .padding(vertical = 10.dp, horizontal = 4.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 RadioButton(
@@ -898,25 +962,117 @@ private fun AllInOneVideoPlayer(
                 }
             )
         }
+
+        // Subtitle (CC) Selection Dialog (Off by default)
+        if (showSubDialog) {
+            AlertDialog(
+                onDismissRequest = { showSubDialog = false },
+                title = { Text("Subtitles (CC)", fontWeight = FontWeight.Bold) },
+                text = {
+                    LazyColumn {
+                        // Option 1: Off (Default)
+                        item {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(8.dp))
+                                    .clickable {
+                                        player.trackSelectionParameters = player.trackSelectionParameters
+                                            .buildUpon()
+                                            .setTrackTypeDisabled(C.TRACK_TYPE_TEXT, true)
+                                            .build()
+                                        isSubEnabled = false
+                                        showHud("Subtitles Disabled")
+                                        showSubDialog = false
+                                    }
+                                    .padding(vertical = 10.dp, horizontal = 4.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                RadioButton(
+                                    selected = !isSubEnabled,
+                                    onClick = null,
+                                    colors = RadioButtonDefaults.colors(selectedColor = clintColors.primary)
+                                )
+                                Spacer(Modifier.width(8.dp))
+                                Text("Off (Disable)", fontSize = 14.sp, fontWeight = FontWeight.Medium)
+                            }
+                        }
+
+                        // Option 2..N: Detected tracks
+                        itemsIndexed(subTracks) { idx, item ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(8.dp))
+                                    .clickable {
+                                        var count = 0
+                                        val current = player.currentTracks
+                                        for (group in current.groups) {
+                                            if (group.type == C.TRACK_TYPE_TEXT) {
+                                                for (i in 0 until group.length) {
+                                                    if (count == idx) {
+                                                        player.trackSelectionParameters = player.trackSelectionParameters
+                                                            .buildUpon()
+                                                            .setTrackTypeDisabled(C.TRACK_TYPE_TEXT, false)
+                                                            .setOverrideForType(TrackSelectionOverride(group.mediaTrackGroup, i))
+                                                            .build()
+                                                        isSubEnabled = true
+                                                        showHud("Sub: ${item.label}")
+                                                        showSubDialog = false
+                                                        return@clickable
+                                                    }
+                                                    count++
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .padding(vertical = 10.dp, horizontal = 4.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                RadioButton(
+                                    selected = isSubEnabled && item.isSelected,
+                                    onClick = null,
+                                    colors = RadioButtonDefaults.colors(selectedColor = clintColors.primary)
+                                )
+                                Spacer(Modifier.width(8.dp))
+                                Text(item.label, fontSize = 14.sp)
+                            }
+                        }
+                    }
+                },
+                confirmButton = {
+                    TextButton(onClick = { showSubDialog = false }) {
+                        Text("Close")
+                    }
+                }
+            )
+        }
     }
 }
 
 @Composable
-private fun PlayerChip(
+private fun ModernPlayerPill(
     label: String,
+    isActive: Boolean = false,
+    activeColor: Color = Color.White,
     onClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(6.dp))
-            .background(Color.White.copy(alpha = 0.2f))
+            .clip(RoundedCornerShape(16.dp))
+            .background(if (isActive) activeColor.copy(alpha = 0.35f) else Color.White.copy(alpha = 0.16f))
+            .border(
+                1.dp,
+                if (isActive) activeColor.copy(alpha = 0.7f) else Color.White.copy(alpha = 0.12f),
+                RoundedCornerShape(16.dp)
+            )
             .clickable(onClick = onClick)
-            .padding(horizontal = 9.dp, vertical = 5.dp),
+            .padding(horizontal = 10.dp, vertical = 5.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = label,
-            color = Color.White,
+            color = if (isActive) Color.White else Color.White.copy(alpha = 0.9f),
             fontSize = 11.sp,
             fontWeight = FontWeight.SemiBold
         )
